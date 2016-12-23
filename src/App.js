@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Radium from 'radium'
+import RandomWords from 'random-words'
 import { COLOURS, SIZE } from './vars.js'
 import Clock from './components/Clock'
 import CustomPathInput from './components/CustomPathInput'
@@ -8,9 +9,13 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      path: ''
+      path: this.getUniqueWord()
     }
     this.updatePath = this.updatePath.bind(this)
+  }
+
+  getUniqueWord() {
+    return RandomWords()
   }
 
   updatePath(event) {
