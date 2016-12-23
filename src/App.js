@@ -6,8 +6,15 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      customPath: ''
+      path: ''
     }
+    this.updatePath = this.updatePath.bind(this)
+  }
+
+  updatePath(event) {
+    this.setState({
+      path: event.target.value
+    })
   }
 
   render() {
@@ -22,12 +29,12 @@ class App extends Component {
       }
     }
 
-    let url = window.location.protocol + '//' + window.location.host + '/' + this.state.customPath
+    let url = window.location.protocol + '//' + window.location.host + '/' + this.state.path
     return (
       <div>
         <h1 style={styles.url}>{ url }</h1>
         <Clock />
-        <CustomPathInput />
+        <CustomPathInput path={this.state.path} updatePath={this.updatePath} />
         <footer>
           <a style={styles.a} href="http://digitalbydan.com">digitalbydan.com</a>
         </footer>
