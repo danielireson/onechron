@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Clock from './components/Clock'
+import CustomPathInput from './components/CustomPathInput'
 
 class App extends Component {
   constructor() {
@@ -13,6 +14,11 @@ class App extends Component {
     const styles = {
       url: {
         fontWeight: '300'
+      },
+      a: {
+        color: '#2980b9',
+        fontWeight: 'bold',
+        textTransform: 'uppercase',
       }
     }
 
@@ -21,6 +27,10 @@ class App extends Component {
       <div>
         <h1 style={styles.url}>{ url }</h1>
         <Clock />
+        <CustomPathInput />
+        <footer>
+          <a style={styles.a} href="http://digitalbydan.com">digitalbydan.com</a>
+        </footer>
       </div>
     )
   }
