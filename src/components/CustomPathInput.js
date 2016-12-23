@@ -28,7 +28,8 @@ class CustomPathInput extends Component {
         value={this.props.path} 
         onChange={this.props.updatePath} 
         type="text" 
-        placeholder="..." />
+        placeholder="..."
+        autoFocus />
     )
   }
 }
