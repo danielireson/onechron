@@ -30,7 +30,7 @@ class App extends Component {
         textTransform: 'uppercase',
       },
       button: {
-        background: COLOURS.GREEN,
+        backgroundColor: COLOURS.GREEN,
         border: 'none',
         borderRadius: SIZE.px(1),
         color: COLOURS.WHITE,
