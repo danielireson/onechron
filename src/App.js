@@ -26,6 +26,17 @@ class App extends Component {
         color: '#2980b9',
         fontWeight: 'bold',
         textTransform: 'uppercase',
+      },
+      button: {
+        background: '#2ecc71',
+        border: 'none',
+        borderRadius: '5px',
+        color: '#fff',
+        cursor: 'pointer',
+        fontSize: '1em',
+        fontWeight: 'bold',
+        marginBottom: '20px',
+        padding: '10px',
       }
     }
 
@@ -35,6 +46,7 @@ class App extends Component {
         <h1 style={styles.url}>{ url }</h1>
         <Clock />
         <CustomPathInput path={this.state.path} updatePath={this.updatePath} />
+        <button style={styles.button}>Create timer at the above URL</button>
         <footer>
           <a style={styles.a} href="http://digitalbydan.com">digitalbydan.com</a>
         </footer>
