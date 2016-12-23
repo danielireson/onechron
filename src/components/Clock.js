@@ -7,7 +7,7 @@ class Clock extends Component {
     this.state = {
       hours: 0,
       minutes: 0,
-      seconds: 0
+      seconds: 0,
     }
   }
 
@@ -23,18 +23,18 @@ class Clock extends Component {
     let now = new Date()
     this.setState({
       hours: now.getHours(),
-      minutes: now.getMinutes(),
-      seconds: this.formatSeconds(now.getSeconds())
+      minutes: this.prependZeroCheck(now.getMinutes()),
+      seconds: this.prependZeroCheck(now.getSeconds()),
     })
   }
 
-  formatSeconds(seconds) {
-    let stringSeconds = seconds.toString()
-    if (stringSeconds.length === 1) {
-      return '0' + stringSeconds
+  prependZeroCheck(number) {
+    let string = number.toString()
+    if (string.length === 1) {
+      return '0' + string
     }
 
-    return seconds
+    return number
   }
 
   render() {
