@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Radium from 'radium'
+import { COLOURS, SIZE } from '../vars.js'
 
 class Clock extends Component {
   constructor() {
@@ -41,13 +42,13 @@ class Clock extends Component {
   render() {
     const styles = {
       clock: {
-        backgroundColor: '#2980b9',
-        borderRadius: '10px',
-        fontSize: '2em',
-        left: '20px',
-        padding: '10px',
+        backgroundColor: COLOURS.DARK_BLUE,
+        borderRadius: SIZE.px(2),
+        fontSize: SIZE.em(2),
+        left: SIZE.px(4),
+        padding: SIZE.px(2),
         position: 'absolute',
-        top: '20px',
+        top: SIZE.px(4),
       }
     }
 

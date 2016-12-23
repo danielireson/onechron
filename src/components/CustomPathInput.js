@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Radium from 'radium'
+import { COLOURS, SIZE } from '../vars.js'
 
 class CustomPathInput extends Component {
   constructor() {
@@ -11,10 +12,10 @@ class CustomPathInput extends Component {
       input: {
         border: 'none',
         boxSizing: 'border-box',
-        color: '#3498db',
-        fontSize: '2em',
-        marginBottom: '20px',
-        padding: '20px',
+        color: COLOURS.BLUE,
+        fontSize: SIZE.em(2),
+        marginBottom: SIZE.px(4),
+        padding: SIZE.px(4),
         textAlign: 'center',
         width: '100%',
       }

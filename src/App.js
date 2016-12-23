@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Radium from 'radium'
+import { COLOURS, SIZE } from './vars.js'
 import Clock from './components/Clock'
 import CustomPathInput from './components/CustomPathInput'
 
@@ -24,20 +25,20 @@ class App extends Component {
         fontWeight: '300'
       },
       a: {
-        color: '#2980b9',
+        color: COLOURS.DARK_BLUE,
         fontWeight: 'bold',
         textTransform: 'uppercase',
       },
       button: {
-        background: '#2ecc71',
+        background: COLOURS.GREEN,
         border: 'none',
-        borderRadius: '5px',
-        color: '#fff',
+        borderRadius: SIZE.px(1),
+        color: COLOURS.WHITE,
         cursor: 'pointer',
-        fontSize: '1em',
+        fontSize: SIZE.em(1),
         fontWeight: 'bold',
-        marginBottom: '20px',
-        padding: '10px',
+        marginBottom: SIZE.px(4),
+        padding: SIZE.px(2),
         ':hover': {
           backgroundImage: 'linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1))'
         }
