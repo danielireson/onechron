@@ -38,6 +38,9 @@ class App extends Component {
         fontWeight: 'bold',
         marginBottom: '20px',
         padding: '10px',
+        ':hover': {
+          backgroundImage: 'linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1))'
+        }
       }
     }
 
