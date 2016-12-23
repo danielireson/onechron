@@ -3,10 +3,6 @@ import Radium from 'radium'
 import { COLOURS, SIZE } from '../vars.js'
 
 class CustomPathInput extends Component {
-  constructor() {
-    super()
-  }
-
   render() {
     const styles = {
       input: {
