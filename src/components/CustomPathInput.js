@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Radium from 'radium'
 
 class CustomPathInput extends Component {
   constructor() {
@@ -30,4 +31,4 @@ class CustomPathInput extends Component {
   }
 }
 
-export default CustomPathInput
+export default Radium(CustomPathInput)

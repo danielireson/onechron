@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Radium from 'radium'
 import Clock from './components/Clock'
 import CustomPathInput from './components/CustomPathInput'
 
@@ -55,4 +56,4 @@ class App extends Component {
   }
 }
 
-export default App
+export default Radium(App)
