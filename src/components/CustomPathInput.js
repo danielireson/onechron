@@ -15,6 +15,7 @@ class CustomPathInput extends Component {
         color: COLOURS.BLUE,
         fontSize: SIZE.em(2),
         marginBottom: SIZE.px(4),
+        outline: 'none',
         padding: SIZE.px(4),
         textAlign: 'center',
         width: '100%',
