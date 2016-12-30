@@ -3,8 +3,29 @@ import Radium from 'radium'
 import { COLOURS, SIZE } from '../vars.js'
 
 class CustomPathInput extends Component {
+  getStatusBackground() {
+    if (this.props.isClearPath) {
+      return COLOURS.GREEN
+    }
+
+    return COLOURS.RED
+  }
+
   render() {
     const styles = {
+      container: {
+        position: 'relative',
+        width: '100%',
+      },
+      status: {
+        background: this.getStatusBackground(),
+        borderRadius: SIZE.px(3),
+        height: SIZE.px(6),
+        position: 'absolute',
+        right: SIZE.px(4),
+        top: SIZE.px(2),
+        width: SIZE.px(6),
+      },
       input: {
         border: 'none',
         boxSizing: 'border-box',
@@ -19,13 +40,16 @@ class CustomPathInput extends Component {
     }
 
     return (
-      <input 
-        style={styles.input} 
-        value={this.props.path} 
-        onChange={this.props.updatePath} 
-        type="text" 
-        placeholder="..."
-        autoFocus />
+      <div style={styles.container}>
+        <div style={styles.status}></div>
+        <input
+          style={styles.input} 
+          value={this.props.pathSuffix} 
+          onChange={this.props.updatePathSuffix} 
+          type="text" 
+          placeholder="..."
+          autoFocus />
+      </div>
     )
   }
 }

@@ -9,7 +9,7 @@ class TimerLink extends Component {
       },
     }
 
-    let url = window.location.protocol + '//' + window.location.host + '/' + this.props.path
+    let url = window.location.protocol + '//' + window.location.host + '/' + this.props.pathSuffix
     return (
       <h1 style={styles.url}>{ url }</h1>
     )

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import firebase from 'firebase'
 import Radium from 'radium'
 import RandomWords from 'random-words'
 import { COLOURS, SIZE } from '../vars.js'
@@ -10,19 +11,37 @@ import TimerLink from '../components/TimerLink'
 class Home extends Component {
   constructor() {
     super()
+    this.firebaseRef = null
     this.state = {
-      path: this.getUniqueWord()
+      pathSuffix: '',
+      isClearPath: false
     }
-    this.updatePath = this.updatePath.bind(this)
+    this.updatePathSuffix = this.updatePathSuffix.bind(this)
   }
 
-  getUniqueWord() {
-    return RandomWords()
+  componentWillMount() {
+    this.firebaseRef = firebase.database().ref('/')
+    this.firebaseRef.once('value').then((snapshot) => {
+      while (true) {
+        var word = RandomWords()
+        if (!snapshot.hasChild(word)) {
+          this.setState({
+            pathSuffix: word,
+            isClearPath: true
+          })
+          break
+        }
+      }
+    })
   }
 
-  updatePath(event) {
+  isClearPath(string) {
+    return true
+  }
+
+  updatePathSuffix(event) {
     this.setState({
-      path: event.target.value
+      pathSuffix: event.target.value
     })
   }
 
@@ -47,8 +66,8 @@ class Home extends Component {
     return (
       <div>
         <Clock />
-        <TimerLink path={this.state.path} />
-        <CustomPathInput path={this.state.path} updatePath={this.updatePath} />
+        <TimerLink pathSuffix={this.state.pathSuffix} />
+        <CustomPathInput pathSuffix={this.state.pathSuffix} isClearPath={this.state.isClearPath} updatePathSuffix={this.updatePathSuffix} />
         <button style={styles.button}>Create timer at the above URL</button>
         <Footer />
       </div>
