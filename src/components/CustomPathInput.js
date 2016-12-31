@@ -45,7 +45,7 @@ class CustomPathInput extends Component {
         <input
           style={styles.input} 
           value={this.props.pathSuffix} 
-          onChange={this.props.updatePathSuffix} 
+          onChange={this.props.handleInputChange} 
           type="text" 
           placeholder="..."
           autoFocus />

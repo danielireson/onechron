@@ -11,12 +11,14 @@ import TimerLink from '../components/TimerLink'
 class Home extends Component {
   constructor() {
     super()
+    this.debounceInput = ''
+    this.debounceTimer = null
     this.firebaseRef = null
     this.state = {
       pathSuffix: '',
       isClearPath: false
     }
-    this.updatePathSuffix = this.updatePathSuffix.bind(this)
+    this.handleInputChange = this.handleInputChange.bind(this)
   }
 
   componentWillMount() {
@@ -35,14 +37,35 @@ class Home extends Component {
     })
   }
 
-  isClearPath(string) {
-    return true
+  checkForClearPath(word) {
+    this.firebaseRef.once('value').then((snapshot) => {
+      if (snapshot.hasChild(word)) {
+        this.setState({
+          isClearPath: false
+        })
+      } else {
+        this.setState({
+          isClearPath: true
+        })        
+      }
+    })
   }
 
-  updatePathSuffix(event) {
+  handleInputChange(event) {
+    this.debounceInput = event.target.value
     this.setState({
-      pathSuffix: event.target.value
+      pathSuffix: this.debounceInput
     })
+    clearTimeout(this.debounceTimer)
+    if (this.debounceInput !== '') {
+      this.debounceTimer = setTimeout(() => {
+        this.checkForClearPath(this.debounceInput)
+      }, 500)
+    } else {
+      this.setState({
+        isClearPath: false
+      })
+    }
   }
 
   render() {
@@ -67,7 +90,7 @@ class Home extends Component {
       <div>
         <Clock />
         <TimerLink pathSuffix={this.state.pathSuffix} />
-        <CustomPathInput pathSuffix={this.state.pathSuffix} isClearPath={this.state.isClearPath} updatePathSuffix={this.updatePathSuffix} />
+        <CustomPathInput pathSuffix={this.state.pathSuffix} isClearPath={this.state.isClearPath} handleInputChange={this.handleInputChange} />
         <button style={styles.button}>Create timer at the above URL</button>
         <Footer />
       </div>
