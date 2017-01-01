@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import firebase from 'firebase'
 import Radium from 'radium'
 import { COLOURS, SIZE, PREMIER_LEAGUE_NICKNAMES } from '../config/vars.js'
+import ArrayService from '../services/array.js'
 import Clock from '../components/Clock'
 import CustomPathInput from '../components/CustomPathInput'
 import Footer from '../components/Footer'
@@ -46,7 +47,7 @@ class Home extends Component {
   }
 
   getSamplePaths() {
-    return PREMIER_LEAGUE_NICKNAMES.map((team) => {
+    return ArrayService.shuffle(PREMIER_LEAGUE_NICKNAMES).map((team) => {
       return team.replace(' ', '')
     })
   }
