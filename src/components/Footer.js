@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Radium from 'radium'
-import { COLOURS } from '../vars.js'
+import { COLOURS } from '../config/vars.js'
 
 class Footer extends Component {
   render() {

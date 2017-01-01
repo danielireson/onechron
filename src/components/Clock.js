@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Radium from 'radium'
-import { COLOURS, SIZE } from '../vars.js'
+import { COLOURS, SIZE } from '../config/vars.js'
 
 class Clock extends Component {
   constructor() {
