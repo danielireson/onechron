@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import firebase from 'firebase'
 import Radium from 'radium'
-import RandomWords from 'random-words'
-import { COLOURS, SIZE } from '../config/vars.js'
+import { COLOURS, SIZE, PREMIER_LEAGUE_NICKNAMES } from '../config/vars.js'
 import Clock from '../components/Clock'
 import CustomPathInput from '../components/CustomPathInput'
 import Footer from '../components/Footer'
@@ -13,6 +12,7 @@ class Home extends Component {
     super()
     this.debounceTimer = null
     this.firebaseRef = null
+    this.samplePaths = this.getSamplePaths()
     this.state = {
       pathSuffix: '',
       isClearPath: false
@@ -23,16 +23,20 @@ class Home extends Component {
   componentWillMount() {
     this.firebaseRef = firebase.database().ref('/')
     this.firebaseRef.once('value').then((snapshot) => {
-      while (true) {
-        var word = RandomWords()
-        if (!snapshot.hasChild(word)) {
+      this.samplePaths.forEach((team) => {
+        if (!snapshot.hasChild(team)) {
           this.setState({
-            pathSuffix: word,
+            pathSuffix: team,
             isClearPath: true
           })
-          break
-        }
-      }
+        }        
+      })
+    })
+  }
+
+  getSamplePaths() {
+    return PREMIER_LEAGUE_NICKNAMES.map((team) => {
+      return team.replace(' ', '')
     })
   }
 

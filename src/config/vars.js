@@ -16,3 +16,27 @@ export const SIZE = {
     return (this.BASE_EM * multiple).toString() + 'em'
   }
 }
+
+export const PREMIER_LEAGUE_NICKNAMES = [
+  'baggies',
+  'black cats',
+  'blues',
+  'boro',
+  'canaries',
+  'cherries',
+  'citizens',
+  'clarets',
+  'eagles',
+  'foxes',
+  'gunners',
+  'hammers',
+  'hornets',
+  'magpies',
+  'potters',
+  'red devils',
+  'reds',
+  'saints',
+  'swans',
+  'tigers',
+  'toffees',
+]
