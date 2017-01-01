@@ -60,7 +60,7 @@ class Home extends Component {
     if (this.debounceInput !== '') {
       this.debounceTimer = setTimeout(() => {
         this.checkForClearPath(this.debounceInput)
-      }, 500)
+      }, 100)
     } else {
       this.setState({
         isClearPath: false
@@ -81,7 +81,11 @@ class Home extends Component {
         marginBottom: SIZE.px(4),
         padding: SIZE.px(2),
         ':hover': {
-          backgroundImage: 'linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1))'
+          backgroundImage: 'linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1))',
+        },
+        ':disabled': {
+          cursor: 'not-allowed',
+          opacity: 0.4,
         }
       }
     }
@@ -91,7 +95,7 @@ class Home extends Component {
         <Clock />
         <TimerLink pathSuffix={this.state.pathSuffix} />
         <CustomPathInput pathSuffix={this.state.pathSuffix} isClearPath={this.state.isClearPath} handleInputChange={this.handleInputChange} />
-        <button style={styles.button}>Create timer at the above URL</button>
+        <button style={styles.button} disabled={!this.state.isClearPath}>Create timer at the above URL</button>
         <Footer />
       </div>
     )
