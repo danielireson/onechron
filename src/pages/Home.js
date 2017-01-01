@@ -55,7 +55,7 @@ class Home extends Component {
   }
 
   handleInputChange(event) {
-    let debounceInput = event.target.value
+    let debounceInput = event.target.value.replace(' ', '')
     this.setState({
       path: debounceInput
     })
