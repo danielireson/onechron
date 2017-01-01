@@ -24,7 +24,7 @@ class Home extends Component {
     this.firebaseRef = firebase.database().ref('/')
     this.firebaseRef.once('value').then((snapshot) => {
       this.samplePaths.forEach((team) => {
-        if (!snapshot.hasChild(team)) {
+        if (this.state.path == '' && !snapshot.hasChild(team)) {
           this.setState({
             path: team,
             isClearPath: true
