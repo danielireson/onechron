@@ -14,7 +14,7 @@ class Home extends Component {
     this.firebaseRef = null
     this.samplePaths = this.getSamplePaths()
     this.state = {
-      pathSuffix: '',
+      path: '',
       isClearPath: false
     }
     this.handleInputChange = this.handleInputChange.bind(this)
@@ -26,7 +26,7 @@ class Home extends Component {
       this.samplePaths.forEach((team) => {
         if (!snapshot.hasChild(team)) {
           this.setState({
-            pathSuffix: team,
+            path: team,
             isClearPath: true
           })
         }        
@@ -57,7 +57,7 @@ class Home extends Component {
   handleInputChange(event) {
     let debounceInput = event.target.value
     this.setState({
-      pathSuffix: debounceInput
+      path: debounceInput
     })
     clearTimeout(this.debounceTimer)
     if (debounceInput !== '') {
@@ -96,8 +96,8 @@ class Home extends Component {
     return (
       <div>
         <Clock />
-        <TimerLink pathSuffix={this.state.pathSuffix} />
-        <CustomPathInput pathSuffix={this.state.pathSuffix} isClearPath={this.state.isClearPath} handleInputChange={this.handleInputChange} />
+        <TimerLink path={this.state.path} />
+        <CustomPathInput path={this.state.path} isClearPath={this.state.isClearPath} handleInputChange={this.handleInputChange} />
         <button style={styles.button} disabled={!this.state.isClearPath}>Create timer at the above URL</button>
         <Footer />
       </div>

@@ -44,7 +44,7 @@ class CustomPathInput extends Component {
         <div style={styles.status}></div>
         <input
           style={styles.input} 
-          value={this.props.pathSuffix} 
+          value={this.props.path} 
           onChange={this.props.handleInputChange} 
           type="text" 
           placeholder="..."
