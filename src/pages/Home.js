@@ -11,7 +11,6 @@ import TimerLink from '../components/TimerLink'
 class Home extends Component {
   constructor() {
     super()
-    this.debounceInput = ''
     this.debounceTimer = null
     this.firebaseRef = null
     this.state = {
@@ -52,14 +51,14 @@ class Home extends Component {
   }
 
   handleInputChange(event) {
-    this.debounceInput = event.target.value
+    let debounceInput = event.target.value
     this.setState({
-      pathSuffix: this.debounceInput
+      pathSuffix: debounceInput
     })
     clearTimeout(this.debounceTimer)
-    if (this.debounceInput !== '') {
+    if (debounceInput !== '') {
       this.debounceTimer = setTimeout(() => {
-        this.checkForClearPath(this.debounceInput)
+        this.checkForClearPath(debounceInput)
       }, 100)
     } else {
       this.setState({
