@@ -23,15 +23,26 @@ class Home extends Component {
   componentWillMount() {
     this.firebaseRef = firebase.database().ref('/')
     this.firebaseRef.once('value').then((snapshot) => {
-      this.samplePaths.forEach((team) => {
-        if (this.state.path == '' && !snapshot.hasChild(team)) {
+      for (let i = 0; i < this.samplePaths.length; i++) {
+        if (this.state.path === '' && !snapshot.hasChild(this.samplePaths[i])) {
           this.setState({
-            path: team,
             isClearPath: true
           })
-        }        
-      })
+          this.setPathStateByKeystroke(this.samplePaths[i])
+          break
+        }
+      }
     })
+  }
+
+  setPathStateByKeystroke(word, index = 1) {
+    if (index !== word.length + 1) {
+      setTimeout(() => {
+        this.setState({
+          path: word.substr(0, index)
+        }, this.setPathStateByKeystroke(word, index + 1))
+      }, 25);
+    }
   }
 
   getSamplePaths() {
