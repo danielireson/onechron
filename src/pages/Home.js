@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { browserHistory } from 'react-router'
 import firebase from 'firebase'
 import Radium from 'radium'
 import { COLOURS, SIZE, PREMIER_LEAGUE_NICKNAMES as SAMPLE_PATHS } from '../config/vars.js'
@@ -19,6 +20,7 @@ class Home extends Component {
       isClearPath: false
     }
     this.handleInputChange = this.handleInputChange.bind(this)
+    this.handleButtonClick = this.handleButtonClick.bind(this)
   }
 
   componentWillMount() {
@@ -66,6 +68,19 @@ class Home extends Component {
     })
   }
 
+  createFirebaseTimer() {
+    this.firebaseRef.child(this.state.path).set({
+      paused: false,
+      created_at: firebase.database.ServerValue.TIMESTAMP,
+      end_time: firebase.database.ServerValue.TIMESTAMP
+    })
+  }
+
+  handleButtonClick() {
+    this.createFirebaseTimer()
+    browserHistory.push(this.state.path)
+  }
+
   handleInputChange(event) {
     let debounceInput = event.target.value.replace(' ', '')
     this.setState({
@@ -98,6 +113,9 @@ class Home extends Component {
         ':hover': {
           backgroundImage: 'linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1))',
         },
+        ':active': {
+          backgroundImage: 'linear-gradient(transparent,rgba(0,0,0,.1) 40%,rgba(0,0,0,.15))',
+        },
         ':disabled': {
           cursor: 'not-allowed',
           opacity: 0.4,
@@ -110,7 +128,7 @@ class Home extends Component {
         <Clock />
         <TimerLink path={this.state.path} />
         <CustomPathInput path={this.state.path} isClearPath={this.state.isClearPath} handleInputChange={this.handleInputChange} />
-        <button style={styles.button} disabled={!this.state.isClearPath}>Create timer at the above URL</button>
+        <button onClick={this.handleButtonClick} style={styles.button} disabled={!this.state.isClearPath}>Create timer at the above URL</button>
         <Footer />
       </div>
     )
