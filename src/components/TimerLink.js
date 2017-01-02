@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import Radium from 'radium'
+import { SIZE } from '../config/vars'
 
 class TimerLink extends Component {
   render() {
     const styles = {
       url: {
-        fontWeight: '300'
+        fontWeight: '300',
+        marginBottom: SIZE.px(4),
       },
     }
 
