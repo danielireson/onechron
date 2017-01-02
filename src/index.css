@@ -1,5 +1,8 @@
-body {
+html {
   background: #3498db;
+}
+
+body {
   color: #fff;
   font-family: sans-serif;
   margin: 100px 0;

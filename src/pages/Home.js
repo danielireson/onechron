@@ -7,6 +7,7 @@ import ArrayService from '../services/array.js'
 import Clock from '../components/Clock'
 import CustomPathInput from '../components/CustomPathInput'
 import Footer from '../components/Footer'
+import FullScreenButton from '../components/FullScreenButton'
 import TimerLink from '../components/TimerLink'
 
 class Home extends Component {
@@ -126,6 +127,7 @@ class Home extends Component {
     return (
       <div>
         <Clock />
+        <FullScreenButton />
         <TimerLink path={this.state.path} />
         <CustomPathInput path={this.state.path} isClearPath={this.state.isClearPath} handleInputChange={this.handleInputChange} />
         <button onClick={this.handleButtonClick} style={styles.button} disabled={!this.state.isClearPath}>Create timer at the above URL</button>
