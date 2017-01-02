@@ -3,7 +3,7 @@ import { browserHistory } from 'react-router'
 import firebase from 'firebase'
 import Radium from 'radium'
 import { COLOURS, SIZE, PREMIER_LEAGUE_NICKNAMES as SAMPLE_PATHS } from '../config/vars.js'
-import ArrayService from '../services/array.js'
+import UtilityService from '../services/utility.js'
 import Clock from '../components/Clock'
 import CustomPathInput from '../components/CustomPathInput'
 import Footer from '../components/Footer'
@@ -50,7 +50,7 @@ class Home extends Component {
   }
 
   getSamplePaths() {
-    return ArrayService.shuffle(SAMPLE_PATHS).map((team) => {
+    return UtilityService.shuffle(SAMPLE_PATHS).map((team) => {
       return team.replace(' ', '')
     })
   }

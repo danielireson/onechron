@@ -9,5 +9,8 @@ export default {
       i++
     }
     return array  
+  },
+  merge() {
+    return Object.assign({}, ...arguments)
   }
 }
