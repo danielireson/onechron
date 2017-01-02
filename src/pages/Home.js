@@ -39,6 +39,10 @@ class Home extends Component {
     })
   }
 
+  componentWillUnmount() {
+    this.firebaseRef.off()
+  }
+
   setPathStateByKeystroke(word, index = 1) {
     if (index !== word.length + 1) {
       setTimeout(() => {
