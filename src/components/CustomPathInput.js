@@ -7,7 +7,6 @@ class CustomPathInput extends Component {
     if (this.props.isClearPath) {
       return COLOURS.GREEN
     }
-
     return COLOURS.RED
   }
 
