@@ -45,7 +45,7 @@ class Home extends Component {
 
   setPathStateByKeystroke(word, index = 1) {
     if (index !== word.length + 1) {
-      setTimeout(() => {
+      window.setTimeout(() => {
         this.setState({
           path: word.substr(0, index)
         }, this.setPathStateByKeystroke(word, index + 1))
@@ -91,9 +91,9 @@ class Home extends Component {
     this.setState({
       path: debounceInput
     })
-    clearTimeout(this.debounceTimer)
+    window.clearTimeout(this.debounceTimer)
     if (debounceInput !== '') {
-      this.debounceTimer = setTimeout(() => {
+      this.debounceTimer = window.setTimeout(() => {
         this.checkForClearPath(debounceInput)
       }, 100)
     } else {
