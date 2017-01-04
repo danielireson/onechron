@@ -63,11 +63,9 @@ class Timer extends Component {
           <h1 style={UtilityService.merge(styles.h1, styles.noMarginRight)}>{this.state.seconds}<small style={styles.small}>S</small></h1>
         </div>
       )
-    } else {
-      return (
-        <FontAwesome style={styles.spinner} name='spinner' size='4x' spin />
-      )
     }
+    
+    return <FontAwesome style={styles.spinner} name='spinner' size='4x' spin />
   }
 }
 
