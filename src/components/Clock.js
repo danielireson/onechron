@@ -18,6 +18,10 @@ class Clock extends Component {
     this.timer = window.setInterval(() => this.getTime(), 1000)
   }
 
+  componentWillUnmount() {
+    window.clearInterval(this.timer)
+  }
+
   getTime() {
     let now = new Date()
     this.setState({
