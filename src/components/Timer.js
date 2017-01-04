@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import FontAwesome from 'react-fontawesome'
 import Radium from 'radium'
 import { COLOURS, SIZE } from '../config/vars.js'
 import UtilityService from '../services/utility.js'
@@ -9,7 +10,7 @@ class Timer extends Component {
     this.timer = null
     this.state = {
       minutes: 0,
-      seconds: 0
+      seconds: 0,
     }
   }
 
@@ -49,15 +50,24 @@ class Timer extends Component {
       small: {
         color: COLOURS.DARK_BLUE,
         fontSize: '50%',
+      },
+      spinner: {
+        marginBottom: SIZE.px(4)
       }
     }
 
-    return (
-      <div>
-        <h1 style={styles.h1}>{this.state.minutes}<small style={styles.small}>M</small></h1>
-        <h1 style={UtilityService.merge(styles.h1, styles.noMarginRight)}>{this.state.seconds}<small style={styles.small}>S</small></h1>
-      </div>
-    )
+    if (this.props.loaded) {
+      return (
+        <div>
+          <h1 style={styles.h1}>{this.state.minutes}<small style={styles.small}>M</small></h1>
+          <h1 style={UtilityService.merge(styles.h1, styles.noMarginRight)}>{this.state.seconds}<small style={styles.small}>S</small></h1>
+        </div>
+      )
+    } else {
+      return (
+        <FontAwesome style={styles.spinner} name='spinner' size='4x' spin />
+      )
+    }
   }
 }
 
