@@ -12,7 +12,7 @@ class Live extends Component {
     super()
     this.firebaseRef = null
     this.state = {
-      controlsVisible: false,
+      controls: false,
       created_at: 0,
       end_time: 0,
       loaded: false,
@@ -38,13 +38,13 @@ class Live extends Component {
   }
 
   toggleControlsVisiblity() {
-    if (this.state.controlsVisible) {
+    if (this.state.controls) {
       this.setState({
-        controlsVisible: false
+        controls: false
       })
     } else {
       this.setState({
-        controlsVisible: true
+        controls: true
       })
     }
   }
@@ -56,6 +56,7 @@ class Live extends Component {
         <FullScreenButton />
         <TimerLink path={this.props.params.path} />
         <Timer loaded={this.state.loaded} end_time={this.state.end_time} paused={this.state.paused} />
+        <TimerControls loaded={this.state.loaded} controls={this.state.controls} toggleControlsVisiblity={this.toggleControlsVisiblity} />
         <Footer />
       </div>
     )
