@@ -78,4 +78,10 @@ class TimerControls extends Component {
   }
 }
 
+TimerControls.PropTypes = {
+  loaded: React.PropTypes.bool.isRequired,
+  controls: React.PropTypes.bool.isRequired,
+  toggleControlsVisiblity: React.PropTypes.func.isRequired,
+}
+
 export default Radium(TimerControls)

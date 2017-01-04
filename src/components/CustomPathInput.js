@@ -53,4 +53,10 @@ class CustomPathInput extends Component {
   }
 }
 
+CustomPathInput.propTypes = {
+  path: React.PropTypes.string.isRequired,
+  isClearPath: React.PropTypes.bool.isRequired,
+  handleInputChange: React.PropTypes.func.isRequired,
+}
+
 export default Radium(CustomPathInput)

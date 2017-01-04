@@ -18,4 +18,8 @@ class TimerLink extends Component {
   }
 }
 
+TimerLink.propTypes = {
+  path: React.PropTypes.string.isRequired,
+}
+
 export default Radium(TimerLink)

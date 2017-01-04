@@ -64,9 +64,15 @@ class Timer extends Component {
         </div>
       )
     }
-    
+
     return <FontAwesome style={styles.spinner} name='spinner' size='4x' spin />
   }
+}
+
+Timer.propTypes = {
+  loaded: React.PropTypes.bool.isRequired,
+  end_time: React.PropTypes.number.isRequired,
+  paused: React.PropTypes.bool.isRequired,
 }
 
 export default Radium(Timer)
