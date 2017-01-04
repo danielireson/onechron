@@ -55,7 +55,7 @@ class Clock extends Component {
 
     return (
       <div style={styles.clock}>
-        { this.state.hours }:{ this.state.minutes }
+        {this.state.hours}:{this.state.minutes}
       </div>
     )
   }
