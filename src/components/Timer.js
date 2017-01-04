@@ -26,7 +26,7 @@ class Timer extends Component {
     let totalSeconds = (new Date(this.props.end_time) - new Date()) / 1000
     let minutes = Math.floor(totalSeconds / 60)
     let seconds = Math.floor(totalSeconds - (minutes * 60))
-    if (minutes >= 0) {
+    if (minutes >= 0 && !this.props.paused) {
       this.setState({
         minutes: minutes,
         seconds: seconds
