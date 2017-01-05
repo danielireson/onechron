@@ -30,7 +30,7 @@ class Timer extends Component {
     if (minutes >= 0 && !this.props.paused) {
       this.setState({
         minutes: minutes,
-        seconds: seconds
+        seconds: seconds,
       })
     }
   }
@@ -52,7 +52,7 @@ class Timer extends Component {
         fontSize: '50%',
       },
       spinner: {
-        marginBottom: SIZE.px(4)
+        marginBottom: SIZE.px(4),
       }
     }
 

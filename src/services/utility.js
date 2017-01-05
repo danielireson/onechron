@@ -12,5 +12,5 @@ export default {
   },
   merge() {
     return Object.assign({}, ...arguments)
-  }
+  },
 }

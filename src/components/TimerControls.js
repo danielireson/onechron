@@ -39,7 +39,7 @@ class TimerControls extends Component {
         zoom: 1,
       },
       noMarginRight: {
-        marginRight: 0
+        marginRight: 0,
       },
     }
 

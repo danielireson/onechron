@@ -14,7 +14,7 @@ export const SIZE = {
   },
   em(multiple) {
     return (this.BASE_EM * multiple).toString() + 'em'
-  }
+  },
 }
 
 export const PREMIER_LEAGUE_NICKNAMES = [

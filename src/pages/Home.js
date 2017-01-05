@@ -18,7 +18,7 @@ class Home extends Component {
     this.samplePaths = this.getSamplePaths()
     this.state = {
       path: '',
-      isClearPath: false
+      isClearPath: false,
     }
     this.handleInputChange = this.handleInputChange.bind(this)
     this.handleButtonClick = this.handleButtonClick.bind(this)
@@ -77,7 +77,7 @@ class Home extends Component {
     this.firebaseRef.child(this.state.path).set({
       paused: false,
       created_at: firebase.database.ServerValue.TIMESTAMP,
-      end_time: firebase.database.ServerValue.TIMESTAMP
+      end_time: firebase.database.ServerValue.TIMESTAMP,
     })
   }
 
