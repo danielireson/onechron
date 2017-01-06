@@ -1,3 +1,5 @@
+export const APP_NAME = 'OneChron'
+
 export const COLOURS = {
   BLUE: '#3498db',
   DARK_BLUE: '#2980b9',

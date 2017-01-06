@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import FontAwesome from 'react-fontawesome'
 import Radium from 'radium'
-import { COLOURS, SIZE } from '../config/vars.js'
+import { APP_NAME, COLOURS, SIZE } from '../config/vars.js'
 import UtilityService from '../services/utility.js'
 
 class Timer extends Component {
@@ -31,8 +31,14 @@ class Timer extends Component {
       this.setState({
         minutes: minutes,
         seconds: seconds,
+      }, () => {
+        document.title = this.generatePageTitle()
       })
     }
+  }
+
+  generatePageTitle() {
+    return this.state.minutes + 'm ' + this.state.seconds + 's - ' + APP_NAME
   }
 
   render() {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import firebase from 'firebase'
+import { APP_NAME } from '../config/vars.js'
 import Clock from '../components/Clock'
 import Footer from '../components/Footer'
 import FullScreenButton from '../components/FullScreenButton'
@@ -10,6 +11,7 @@ import TimerControls from '../components/TimerControls'
 class Live extends Component {
   constructor() {
     super()
+    document.title = APP_NAME
     this.firebaseRef = null
     this.state = {
       controls: false,
