@@ -6,12 +6,12 @@ import { SIZE } from '../config/vars'
 class TimerLink extends Component {
   constructor(props) {
     super(props)
-    this.url = window.location.protocol + '//' + window.location.host + '/' + this.props.path
+    this.baseUrl = window.location.protocol + '//' + window.location.host + '/'
     this.handleClick = this.handleClick.bind(this)
   }
 
   handleClick() {
-    copy(this.url)
+    copy(this.state.url)
   }
 
   render() {
@@ -27,7 +27,7 @@ class TimerLink extends Component {
     }
 
     return (
-      <h1 onClick={this.handleClick} style={styles.url}>{this.url}</h1>
+      <h1 onClick={this.handleClick} style={styles.url}>{this.baseUrl + this.props.path}</h1>
     )
   }
 }
