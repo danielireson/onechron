@@ -51,15 +51,12 @@ class Timer extends Component {
         marginTop: 0,
       },
       noMarginRight: {
-        marginRight: 0
+        marginRight: 0,
       },
       small: {
         color: COLOURS.DARK_BLUE,
         fontSize: '50%',
       },
-      spinner: {
-        marginBottom: SIZE.px(4),
-      }
     }
 
     if (this.props.loaded) {
