@@ -25,7 +25,7 @@ class Clock extends Component {
   getTime() {
     let now = new Date()
     this.setState({
-      hours: now.getHours(),
+      hours: this.prependZeroCheck(now.getHours()),
       minutes: this.prependZeroCheck(now.getMinutes()),
       seconds: this.prependZeroCheck(now.getSeconds()),
     })
