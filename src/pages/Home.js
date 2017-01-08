@@ -4,6 +4,7 @@ import firebase from 'firebase'
 import Radium from 'radium'
 import { APP_NAME, COLOURS, SIZE, PREMIER_LEAGUE_NICKNAMES as SAMPLE_PATHS } from '../config/vars.js'
 import UtilityService from '../services/utility.js'
+import Button from '../components/Button'
 import Clock from '../components/Clock'
 import CustomPathInput from '../components/CustomPathInput'
 import Footer from '../components/Footer'
@@ -105,37 +106,13 @@ class Home extends Component {
   }
 
   render() {
-    const styles = {
-      button: {
-        backgroundColor: COLOURS.GREEN,
-        border: 'none',
-        borderRadius: SIZE.px(1),
-        color: COLOURS.WHITE,
-        cursor: 'pointer',
-        fontSize: SIZE.em(1),
-        fontWeight: 'bold',
-        marginBottom: SIZE.px(4),
-        padding: SIZE.px(2),
-        ':hover': {
-          backgroundImage: 'linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1))',
-        },
-        ':active': {
-          backgroundImage: 'linear-gradient(transparent,rgba(0,0,0,.1) 40%,rgba(0,0,0,.15))',
-        },
-        ':disabled': {
-          cursor: 'not-allowed',
-          opacity: 0.4,
-        }
-      }
-    }
-
     return (
       <div>
         <Clock />
         <FullScreenButton />
         <TimerLink path={this.state.path} />
         <CustomPathInput path={this.state.path} isClearPath={this.state.isClearPath} handleInputChange={this.handleInputChange} />
-        <button onClick={this.handleButtonClick} style={styles.button} disabled={!this.state.isClearPath}>Create timer at the above URL</button>
+        <Button text='Create timer at the above URL' onClick={this.handleButtonClick} disabled={!this.state.isClearPath} style='success' noMarginRight />
         <Footer />
       </div>
     )
