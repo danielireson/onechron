@@ -11,8 +11,8 @@ class TimerControls extends Component {
       },
     }
 
-    if (this.props.loaded) {
-      if (this.props.controls) {
+    if (this.props.isLoaded) {
+      if (this.props.hasControls) {
         return (
           <div style={styles.container}>
             <Button icon='pause' />
@@ -39,8 +39,8 @@ class TimerControls extends Component {
 }
 
 TimerControls.PropTypes = {
-  loaded: React.PropTypes.bool.isRequired,
-  controls: React.PropTypes.bool.isRequired,
+  isLoaded: React.PropTypes.bool.isRequired,
+  hasControls: React.PropTypes.bool.isRequired,
   toggleControlsVisiblity: React.PropTypes.func.isRequired,
 }
 

@@ -77,7 +77,7 @@ class Home extends Component {
 
   createFirebaseTimer() {
     this.firebaseRef.child(this.state.path).set({
-      paused: false,
+      isPaused: false,
       createdAt: firebase.database.ServerValue.TIMESTAMP,
       endTime: firebase.database.ServerValue.TIMESTAMP,
     })
@@ -112,7 +112,7 @@ class Home extends Component {
         <FullScreenButton />
         <TimerLink path={this.state.path} />
         <CustomPathInput path={this.state.path} isClearPath={this.state.isClearPath} handleInputChange={this.handleInputChange} />
-        <Button text='Create timer at the above URL' onClick={this.handleButtonClick} disabled={!this.state.isClearPath} style='success' noMarginRight />
+        <Button text='Create timer at the above URL' onClick={this.handleButtonClick} isDisabled={!this.state.isClearPath} style='success' noMarginRight />
         <Footer />
       </div>
     )

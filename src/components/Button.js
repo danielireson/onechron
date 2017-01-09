@@ -57,7 +57,7 @@ class Button extends Component {
     }
 
     return (
-      <button onClick={this.props.onClick} style={this.getButtonStyle(styles)} disabled={this.props.disabled}>
+      <button onClick={this.props.onClick} style={this.getButtonStyle(styles)} disabled={this.props.isDisabled}>
         {this.props.icon && <FontAwesome name={this.props.icon} />} {this.props.text}
       </button>
     )
@@ -70,7 +70,7 @@ Button.propTypes = {
   style: React.PropTypes.oneOf(['success', 'danger']),
   onClick: React.PropTypes.func,
   noMarginRight: React.PropTypes.bool,
-  disabled: React.PropTypes.bool,
+  isDisabled: React.PropTypes.bool,
 }
 
 export default Radium(Button)

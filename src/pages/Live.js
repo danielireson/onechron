@@ -14,11 +14,11 @@ class Live extends Component {
     document.title = APP_NAME
     this.firebaseRef = null
     this.state = {
-      controls: false,
       createdAt: 0,
       endTime: 0,
-      loaded: false,
-      paused: false,
+      isLoaded: false,
+      isPaused: false,
+      hasControls: false,
     }
     this.toggleControlsVisiblity = this.toggleControlsVisiblity.bind(this)
   }
@@ -29,7 +29,7 @@ class Live extends Component {
       this.setState(snapshot.val())
       window.setTimeout(() => {
         this.setState({
-          loaded: true
+          isLoaded: true
         })
       }, 1000)
     })
@@ -40,13 +40,13 @@ class Live extends Component {
   }
 
   toggleControlsVisiblity() {
-    if (this.state.controls) {
+    if (this.state.hasControls) {
       this.setState({
-        controls: false
+        hasControls: false
       })
     } else {
       this.setState({
-        controls: true
+        hasControls: true
       })
     }
   }
@@ -57,8 +57,8 @@ class Live extends Component {
         <Clock />
         <FullScreenButton />
         <TimerLink path={this.props.params.path} />
-        <Timer loaded={this.state.loaded} endTime={this.state.endTime} paused={this.state.paused} />
-        <TimerControls loaded={this.state.loaded} controls={this.state.controls} toggleControlsVisiblity={this.toggleControlsVisiblity} />
+        <Timer isLoaded={this.state.isLoaded} endTime={this.state.endTime} isPaused={this.state.isPaused} />
+        <TimerControls isLoaded={this.state.isLoaded} hasControls={this.state.hasControls} toggleControlsVisiblity={this.toggleControlsVisiblity} />
         <Footer />
       </div>
     )
