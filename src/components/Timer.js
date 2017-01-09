@@ -24,7 +24,7 @@ class Timer extends Component {
   }
 
   calculateTime() {
-    let totalSeconds = (new Date(this.props.end_time) - new Date()) / 1000
+    let totalSeconds = (new Date(this.props.endTime) - new Date()) / 1000
     let minutes = Math.floor(totalSeconds / 60)
     let seconds = Math.floor(totalSeconds - (minutes * 60))
     if (minutes >= 0 && !this.props.paused) {
@@ -74,7 +74,7 @@ class Timer extends Component {
 
 Timer.propTypes = {
   loaded: React.PropTypes.bool.isRequired,
-  end_time: React.PropTypes.number.isRequired,
+  endTime: React.PropTypes.number.isRequired,
   paused: React.PropTypes.bool.isRequired,
 }
 

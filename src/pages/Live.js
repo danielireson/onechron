@@ -15,8 +15,8 @@ class Live extends Component {
     this.firebaseRef = null
     this.state = {
       controls: false,
-      created_at: 0,
-      end_time: 0,
+      createdAt: 0,
+      endTime: 0,
       loaded: false,
       paused: false,
     }
@@ -57,7 +57,7 @@ class Live extends Component {
         <Clock />
         <FullScreenButton />
         <TimerLink path={this.props.params.path} />
-        <Timer loaded={this.state.loaded} end_time={this.state.end_time} paused={this.state.paused} />
+        <Timer loaded={this.state.loaded} endTime={this.state.endTime} paused={this.state.paused} />
         <TimerControls loaded={this.state.loaded} controls={this.state.controls} toggleControlsVisiblity={this.toggleControlsVisiblity} />
         <Footer />
       </div>
