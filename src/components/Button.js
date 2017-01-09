@@ -9,8 +9,8 @@ class Button extends Component {
     let buttonStyle = []
     buttonStyle.push(styles.button)
 
-    if (this.props.style) {
-      buttonStyle.push(styles[this.props.style])
+    if (this.props.type) {
+      buttonStyle.push(styles[this.props.type])
     }
 
     if (this.props.noMarginRight) {
@@ -67,7 +67,7 @@ class Button extends Component {
 Button.propTypes = {
   text: React.PropTypes.string,
   icon: React.PropTypes.string,
-  style: React.PropTypes.oneOf(['success', 'danger']),
+  type: React.PropTypes.oneOf(['success', 'danger']),
   onClick: React.PropTypes.func,
   noMarginRight: React.PropTypes.bool,
   isDisabled: React.PropTypes.bool,

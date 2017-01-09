@@ -112,7 +112,7 @@ class Home extends Component {
         <FullScreenButton />
         <TimerLink path={this.state.path} />
         <CustomPathInput path={this.state.path} isClearPath={this.state.isClearPath} handleInputChange={this.handleInputChange} />
-        <Button text='Create timer at the above URL' onClick={this.handleButtonClick} isDisabled={!this.state.isClearPath} style='success' noMarginRight />
+        <Button text='Create timer at the above URL' type='success' onClick={this.handleButtonClick} isDisabled={!this.state.isClearPath} noMarginRight />
         <Footer />
       </div>
     )
