@@ -58,7 +58,7 @@ class Button extends Component {
 
     return (
       <button onClick={this.props.onClick} style={this.getButtonStyle(styles)} disabled={this.props.disabled}>
-        <FontAwesome name={this.props.icon} /> {this.props.text}
+        {this.props.icon && <FontAwesome name={this.props.icon} />} {this.props.text}
       </button>
     )
   }
