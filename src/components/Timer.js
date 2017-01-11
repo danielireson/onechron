@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import FontAwesome from 'react-fontawesome'
 import Radium from 'radium'
 import { APP_NAME, COLOURS, SIZE } from '../config/vars.js'
-import UtilityService from '../services/utility.js'
 
 class Timer extends Component {
   constructor() {
@@ -63,7 +62,7 @@ class Timer extends Component {
       return (
         <div>
           <h1 style={styles.h1}>{this.state.minutes}<small style={styles.small}>M</small></h1>
-          <h1 style={UtilityService.merge(styles.h1, styles.noMarginRight)}>{this.state.seconds}<small style={styles.small}>S</small></h1>
+          <h1 style={[styles.h1, styles.noMarginRight]}>{this.state.seconds}<small style={styles.small}>S</small></h1>
         </div>
       )
     }

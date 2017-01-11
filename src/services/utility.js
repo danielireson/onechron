@@ -10,7 +10,4 @@ export default {
     }
     return array  
   },
-  merge() {
-    return Object.assign({}, ...arguments)
-  },
 }

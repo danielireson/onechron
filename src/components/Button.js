@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import FontAwesome from 'react-fontawesome'
 import Radium from 'radium'
 import { COLOURS, SIZE } from '../config/vars.js'
-import UtilityService from '../services/utility.js'
 
 class Button extends Component {
   getButtonStyle(styles) {
@@ -17,7 +16,7 @@ class Button extends Component {
       buttonStyle.push(styles.noMarginRight)
     }
 
-    return UtilityService.merge(...buttonStyle)
+    return buttonStyle
   }
 
   render() {
