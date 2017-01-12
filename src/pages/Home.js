@@ -22,7 +22,7 @@ class Home extends Component {
       isClearPath: false,
     }
     this.handleInputChange = this.handleInputChange.bind(this)
-    this.handleButtonClick = this.handleButtonClick.bind(this)
+    this.createFirebaseTimer = this.createFirebaseTimer.bind(this)
   }
 
   componentWillMount() {
@@ -91,12 +91,9 @@ class Home extends Component {
       isPaused: false,
       createdAt: firebase.database.ServerValue.TIMESTAMP,
       endTime: firebase.database.ServerValue.TIMESTAMP,
+    }, () => {
+      browserHistory.push(this.state.path)
     })
-  }
-
-  handleButtonClick() {
-    this.createFirebaseTimer()
-    browserHistory.push(this.state.path)
   }
 
   handleInputChange(event) {
@@ -123,7 +120,7 @@ class Home extends Component {
         <FullScreenButton />
         <TimerLink path={this.state.path} />
         <CustomPathInput path={this.state.path} isClearPath={this.state.isClearPath} handleInputChange={this.handleInputChange} />
-        <Button text='Create timer at the above URL' type='success' onClick={this.handleButtonClick} isDisabled={!this.state.isClearPath} noMarginRight />
+        <Button text='Create timer at the above URL' type='success' onClick={this.createFirebaseTimer} isDisabled={!this.state.isClearPath} noMarginRight />
         <Footer />
       </div>
     )
