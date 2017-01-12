@@ -28,7 +28,7 @@ class TimerControls extends Component {
       } else {
         return (
           <div style={styles.container}>
-            <Button icon='unlock-alt' onClick={this.props.toggleControlsVisiblity} noMarginRight />
+            <Button icon='unlock-alt' type='info' onClick={this.props.toggleControlsVisiblity} noMarginRight />
           </div>
         )
       }
