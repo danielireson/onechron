@@ -74,7 +74,7 @@ class Button extends Component {
 Button.propTypes = {
   text: React.PropTypes.string,
   icon: React.PropTypes.string,
-  type: React.PropTypes.oneOf(['success', 'danger']),
+  type: React.PropTypes.oneOf(['info', 'success', 'danger', 'transparent']),
   onClick: React.PropTypes.func,
   noMarginRight: React.PropTypes.bool,
   isDisabled: React.PropTypes.bool,
