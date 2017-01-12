@@ -29,12 +29,13 @@ class Live extends Component {
     this.firebaseRef.on('value', (snapshot) => {
       let data = snapshot.val()
       if (data) {
-        this.setState(snapshot.val())
-        window.setTimeout(() => {
-          this.setState({
-            isLoaded: true
-          })
-        }, 1000)
+        this.setState(snapshot.val(), () => {
+          window.setTimeout(() => {
+            this.setState({
+              isLoaded: true
+            })
+          }, 500)
+        })
       } else {
         // Timer doesn't exist
         browserHistory.push('/')
