@@ -3,7 +3,6 @@ import { browserHistory } from 'react-router'
 import firebase from 'firebase'
 import Radium from 'radium'
 import { APP_NAME, PREMIER_LEAGUE_NICKNAMES as SAMPLE_PATHS } from '../config/vars.js'
-import UtilityService from '../services/utility.js'
 import Button from '../components/Button'
 import Clock from '../components/Clock'
 import CustomPathInput from '../components/CustomPathInput'
@@ -55,8 +54,20 @@ class Home extends Component {
     }
   }
 
+  shuffleArray(array) {
+    let i = 0
+    while (i !== array.length) {
+      let randomIndex = Math.floor(Math.random() * i)
+      let tempItem = array[i]
+      array[i] = array[randomIndex]
+      array[randomIndex] = tempItem
+      i++
+    }
+    return array
+  }
+
   getSamplePaths() {
-    return UtilityService.shuffle(SAMPLE_PATHS).map((team) => {
+    return this.shuffleArray(SAMPLE_PATHS).map((team) => {
       return team.replace(' ', '')
     })
   }
