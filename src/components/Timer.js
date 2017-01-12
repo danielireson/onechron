@@ -56,6 +56,9 @@ class Timer extends Component {
         color: COLOURS.DARK_BLUE,
         fontSize: '50%',
       },
+      spinner: {
+        display: 'block',
+      },
     }
 
     if (this.props.isLoaded) {
