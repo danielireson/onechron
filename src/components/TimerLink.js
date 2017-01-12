@@ -11,12 +11,12 @@ class TimerLink extends Component {
     this.state = {
       tooltip: this.tooltipDefault,
     },
-    this.handleClick = this.handleClick.bind(this)
+    this.onClick = this.onClick.bind(this)
     this.onMouseEnter = this.onMouseEnter.bind(this)
     this.onMouseLeave = this.onMouseLeave.bind(this)
   }
 
-  handleClick() {
+  onClick() {
     let hasCopied = copy(this.baseUrl + this.props.path)
     if (hasCopied) {
       this.setState({
@@ -72,7 +72,7 @@ class TimerLink extends Component {
     }
 
     return (
-      <h1 onClick={this.handleClick} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} style={styles.url}>
+      <h1 onClick={this.onClick} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} style={styles.url}>
         <span style={styles.tooltip}>{this.state.tooltip}</span>
         {this.baseUrl + this.props.path}
       </h1>
