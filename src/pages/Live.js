@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { browserHistory } from 'react-router'
 import firebase from 'firebase'
 import { APP_NAME } from '../config/vars.js'
 import Clock from '../components/Clock'
@@ -26,12 +27,18 @@ class Live extends Component {
   componentWillMount() {
     this.firebaseRef = firebase.database().ref(this.props.params.path)
     this.firebaseRef.on('value', (snapshot) => {
-      this.setState(snapshot.val())
-      window.setTimeout(() => {
-        this.setState({
-          isLoaded: true
-        })
-      }, 1000)
+      let data = snapshot.val()
+      if (data) {
+        this.setState(snapshot.val())
+        window.setTimeout(() => {
+          this.setState({
+            isLoaded: true
+          })
+        }, 1000)
+      } else {
+        // Timer doesn't exist
+        browserHistory.push('/')
+      }
     })
   }
 
