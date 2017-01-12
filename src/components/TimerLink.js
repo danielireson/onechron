@@ -7,13 +7,28 @@ class TimerLink extends Component {
   constructor(props) {
     super(props)
     this.baseUrl = window.location.protocol + '//' + window.location.host + '/'
+    this.tooltipDefault = 'Click to copy to clipboard'
+    this.state = {
+      tooltip: this.tooltipDefault,
+    },
     this.handleClick = this.handleClick.bind(this)
     this.onMouseEnter = this.onMouseEnter.bind(this)
     this.onMouseLeave = this.onMouseLeave.bind(this)
   }
 
   handleClick() {
-    copy(this.state.url)
+    let hasCopied = copy(this.baseUrl + this.props.path)
+    if (hasCopied) {
+      this.setState({
+        tooltip: 'Copied!'
+      }, () => {
+        window.setTimeout(() => {
+          this.setState({
+            tooltip: this.tooltipDefault
+          })
+        }, 500);
+      })
+    }
   }
 
   onMouseEnter(event) {
@@ -58,7 +73,7 @@ class TimerLink extends Component {
 
     return (
       <h1 onClick={this.handleClick} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} style={styles.url}>
-        <span style={styles.tooltip}>Copy to clipboard</span>
+        <span style={styles.tooltip}>{this.state.tooltip}</span>
         {this.baseUrl + this.props.path}
       </h1>
     )
@@ -66,7 +81,7 @@ class TimerLink extends Component {
 }
 
 TimerLink.propTypes = {
-  path: React.PropTypes.string.isRequired,
+  path: React.PropTypes.string.isRequired
 }
 
 export default Radium(TimerLink)
