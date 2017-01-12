@@ -42,12 +42,20 @@ class Button extends Component {
           opacity: 0.4,
         }
       },
+      info: {
+        backgroundColor: COLOURS.DARK_BLUE,
+        color: COLOURS.WHITE,
+      },
       success: {
         backgroundColor: COLOURS.GREEN,
         color: COLOURS.WHITE,
       },
       danger: {
         backgroundColor: COLOURS.RED,
+        color: COLOURS.WHITE,
+      },
+      transparent: {
+        backgroundColor: 'transparent',
         color: COLOURS.WHITE,
       },
       noMarginRight: {
