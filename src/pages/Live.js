@@ -21,7 +21,9 @@ class Live extends Component {
       isPaused: false,
       hasControls: false,
     }
+
     this.toggleControlsVisiblity = this.toggleControlsVisiblity.bind(this)
+    this.setTime = this.setTime.bind(this)
   }
 
   componentWillMount() {
@@ -47,6 +49,13 @@ class Live extends Component {
     this.firebaseRef.off()
   }
 
+  setTime(minutes) {
+    let endTime = new Date().getTime() + minutes * 60 * 1000
+    this.firebaseRef.update({
+      endTime: endTime
+    })
+  }
+
   toggleControlsVisiblity() {
     if (this.state.hasControls) {
       this.setState({
@@ -66,7 +75,7 @@ class Live extends Component {
         <FullScreenButton />
         <TimerLink path={this.props.params.path} />
         <Timer isLoaded={this.state.isLoaded} endTime={this.state.endTime} isPaused={this.state.isPaused} />
-        <TimerControls isLoaded={this.state.isLoaded} hasControls={this.state.hasControls} toggleControlsVisiblity={this.toggleControlsVisiblity} />
+        <TimerControls isLoaded={this.state.isLoaded} hasControls={this.state.hasControls} setTime={this.setTime} toggleControlsVisiblity={this.toggleControlsVisiblity} />
         <Footer />
       </div>
     )

@@ -4,6 +4,13 @@ import { SIZE } from '../config/vars.js'
 import Button from '../components/Button'
 
 class TimerControls extends Component {
+  getCustomInput() {
+    let input = parseInt(prompt('Minutes to count down from'))
+    if (Number.isInteger(input)) {
+      this.props.setTime(input)
+    }
+  }  
+
   render() {
     const styles = {
       container: {
@@ -17,11 +24,11 @@ class TimerControls extends Component {
           <div style={styles.container}>
             <Button icon='pause' />
             <Button icon='stop' />
-            <Button icon='clock-o' text='5m' />
-            <Button icon='clock-o' text='10m' />
-            <Button icon='clock-o' text='15m' />
-            <Button icon='clock-o' text='20m' />
-            <Button icon='clock-o' text='Custom' />
+            <Button icon='clock-o' text='5m' onClick={() => this.props.setTime(5)} />
+            <Button icon='clock-o' text='10m'  onClick={() => this.props.setTime(10)} />
+            <Button icon='clock-o' text='15m'  onClick={() => this.props.setTime(15)} />
+            <Button icon='clock-o' text='20m'  onClick={() => this.props.setTime(20)} />
+            <Button icon='clock-o' text='Custom' onClick={this.getCustomInput.bind(this)} />
             <Button icon='lock' onClick={this.props.toggleControlsVisiblity} noMarginRight />
           </div>
         )
@@ -41,6 +48,7 @@ class TimerControls extends Component {
 TimerControls.PropTypes = {
   isLoaded: React.PropTypes.bool.isRequired,
   hasControls: React.PropTypes.bool.isRequired,
+  setTime: React.PropTypes.func.isRequired,
   toggleControlsVisiblity: React.PropTypes.func.isRequired,
 }
 
