@@ -20,6 +20,12 @@ export const SIZE = {
   },
 }
 
+export const BP = {
+  SMALL: '@media screen and (min-width: 768px)',
+  MEDIUM: '@media screen and (min-width: 992px)',
+  LARGE: '@media screen and (min-width: 1200px)',
+}
+
 export const PREMIER_LEAGUE_NICKNAMES = [
   'baggies',
   'black cats',

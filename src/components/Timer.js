@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import FontAwesome from 'react-fontawesome'
 import Radium from 'radium'
-import { APP_NAME, COLOURS, SIZE } from '../config/vars.js'
+import { APP_NAME, COLOURS, SIZE, BP } from '../config/vars.js'
 
 class Timer extends Component {
   constructor() {
@@ -43,14 +43,21 @@ class Timer extends Component {
   render() {
     const styles = {
       h1: {
-        display: 'inline-block',
-        fontSize: SIZE.em(14),
+        display: 'block',
+        fontSize: SIZE.em(10),
         marginBottom: 0,
         marginRight: SIZE.px(4),
         marginTop: 0,
+        [BP.MEDIUM] : {
+          fontSize: SIZE.em(14),
+          display: 'inline-block',
+        },
+        [BP.LARGE] : {
+          fontSize: SIZE.em(20),
+        },
       },
       noMarginRight: {
-        marginRight: 0,
+        marginRight: 0, 
       },
       small: {
         color: COLOURS.DARK_BLUE,

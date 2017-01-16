@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Radium from 'radium'
 import copy from 'copy-to-clipboard'
-import { COLOURS, SIZE } from '../config/vars'
+import { COLOURS, SIZE, BP } from '../config/vars'
 
 class TimerLink extends Component {
   constructor(props) {
@@ -46,13 +46,17 @@ class TimerLink extends Component {
   render() {
     const styles = {
       url: {
-        display: 'inline-block',
+        display: 'none',
         fontWeight: '300',
+        fontSize: SIZE.em(2),
         marginBottom: SIZE.px(4),
         position: 'relative',
         userSelect: 'none',
         ':hover': {
           cursor: 'copy',
+        },
+        [BP.MEDIUM] : {
+          display: 'inline-block',
         },
       },
       tooltip: {

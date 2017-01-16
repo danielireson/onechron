@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import FontAwesome from 'react-fontawesome'
 import Radium from 'radium'
-import { COLOURS, SIZE } from '../config/vars.js'
+import { COLOURS, SIZE, BP } from '../config/vars.js'
 
 class Button extends Component {
   getButtonStyle(styles) {
@@ -24,12 +24,14 @@ class Button extends Component {
       button: {
         backgroundColor: COLOURS.GREY,
         border: 'none',
-        borderRadius: SIZE.px(1),
         color: COLOURS.BLUE,
         cursor: 'pointer',
         fontSize: SIZE.em(1),
+        display: 'block',
         marginRight: SIZE.px(1),
+        marginBottom: SIZE.px(2),
         padding: SIZE.px(2),
+        width: '100%',
         whiteSpace: 'nowrap',
         ':hover': {
           backgroundImage: 'linear-gradient(transparent,rgba(0,0,0,.05) 40%,rgba(0,0,0,.1))',
@@ -40,7 +42,13 @@ class Button extends Component {
         ':disabled': {
           cursor: 'not-allowed',
           opacity: 0.4,
-        }
+        },
+        [BP.MEDIUM] : {
+          borderRadius: SIZE.px(1),
+          display: 'inline-block',
+          marginBottom: 0,
+          width: 'auto',
+        },
       },
       info: {
         backgroundColor: COLOURS.DARK_BLUE,
