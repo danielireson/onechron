@@ -10,7 +10,7 @@ class TimerLink extends Component {
     this.tooltipDefault = 'Click to copy to clipboard'
     this.state = {
       tooltip: this.tooltipDefault,
-    },
+    }
     this.onClick = this.onClick.bind(this)
     this.onMouseEnter = this.onMouseEnter.bind(this)
     this.onMouseLeave = this.onMouseLeave.bind(this)
