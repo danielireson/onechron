@@ -1,4 +1,4 @@
-export const APP_NAME = 'OneChron'
+export const APP_NAME = 'OneClock'
 
 export const COLOURS = {
   BLUE: '#3498db',
