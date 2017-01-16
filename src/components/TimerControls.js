@@ -22,7 +22,6 @@ class TimerControls extends Component {
       if (this.props.hasControls) {
         return (
           <div style={styles.container}>
-            <Button icon='pause' />
             <Button icon='stop' />
             <Button icon='clock-o' text='5m' onClick={() => this.props.setTime(5)} />
             <Button icon='clock-o' text='10m'  onClick={() => this.props.setTime(10)} />

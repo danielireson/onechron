@@ -18,7 +18,6 @@ class Live extends Component {
       createdAt: 0,
       endTime: 0,
       isLoaded: false,
-      isPaused: false,
       hasControls: false,
     }
 
@@ -74,7 +73,7 @@ class Live extends Component {
         <Clock />
         <FullScreenButton />
         <TimerLink path={this.props.params.path} />
-        <Timer isLoaded={this.state.isLoaded} endTime={this.state.endTime} isPaused={this.state.isPaused} />
+        <Timer isLoaded={this.state.isLoaded} endTime={this.state.endTime} />
         <TimerControls isLoaded={this.state.isLoaded} hasControls={this.state.hasControls} setTime={this.setTime} toggleControlsVisiblity={this.toggleControlsVisiblity} />
         <Footer />
       </div>

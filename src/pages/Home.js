@@ -88,7 +88,6 @@ class Home extends Component {
 
   createFirebaseTimer() {
     this.firebaseRef.child(this.state.path).set({
-      isPaused: false,
       createdAt: firebase.database.ServerValue.TIMESTAMP,
       endTime: firebase.database.ServerValue.TIMESTAMP,
     }, () => {

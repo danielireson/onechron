@@ -26,7 +26,7 @@ class Timer extends Component {
     let totalSeconds = (new Date(this.props.endTime) - new Date()) / 1000
     let minutes = Math.floor(totalSeconds / 60)
     let seconds = Math.floor(totalSeconds - (minutes * 60))
-    if (minutes >= 0 && !this.props.isPaused) {
+    if (minutes >= 0) {
       this.setState({
         minutes: minutes,
         seconds: seconds,
@@ -77,7 +77,6 @@ class Timer extends Component {
 Timer.propTypes = {
   endTime: React.PropTypes.number.isRequired,
   isLoaded: React.PropTypes.bool.isRequired,
-  isPaused: React.PropTypes.bool.isRequired,
 }
 
 export default Radium(Timer)
