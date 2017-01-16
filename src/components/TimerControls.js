@@ -5,7 +5,7 @@ import Button from '../components/Button'
 
 class TimerControls extends Component {
   getCustomInput() {
-    let input = parseInt(prompt('Minutes to count down from'))
+    let input = parseInt(prompt('Minutes to count down from'), 10)
     if (Number.isInteger(input)) {
       this.props.setTime(input)
     }
