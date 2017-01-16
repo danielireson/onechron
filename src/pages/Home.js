@@ -44,6 +44,10 @@ class Home extends Component {
     this.firebaseRef.off()
   }
 
+  componentDidMount() {
+    this.clearOldFirebaseTimers()
+  }
+
   setPathStateByKeystroke(word, index = 1) {
     if (index !== word.length + 1) {
       window.setTimeout(() => {
@@ -92,6 +96,18 @@ class Home extends Component {
       endTime: firebase.database.ServerValue.TIMESTAMP,
     }, () => {
       browserHistory.push(this.state.path)
+    })
+  }
+
+  clearOldFirebaseTimers() {
+    this.firebaseRef.once('value').then((snapshot) => {
+      snapshot.forEach((timer) => {
+        let hours = (new Date(timer.val().endTime) - new Date()) / 1000 / 60 / 60
+        // Delete timer if finished over 24 hours ago
+        if (hours < -24) {
+          this.firebaseRef.child(timer.key).remove()
+        }
+      })
     })
   }
 
