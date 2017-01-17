@@ -27,13 +27,19 @@ class Timer extends Component {
     let minutes = Math.floor(totalSeconds / 60)
     let seconds = Math.floor(totalSeconds - (minutes * 60))
     if (minutes >= 0) {
-      this.setState({
-        minutes: minutes,
-        seconds: seconds,
-      }, () => {
-        document.title = this.generatePageTitle()
-      })
+      this.setStateTime(minutes, seconds)
+    } else {
+      this.setStateTime(0, 0)
     }
+  }
+
+  setStateTime(minutes, seconds) {
+    this.setState({
+      minutes: minutes,
+      seconds: seconds,      
+    }, () => {
+      document.title = this.generatePageTitle()
+    })
   }
 
   generatePageTitle() {
