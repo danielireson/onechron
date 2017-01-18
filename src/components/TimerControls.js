@@ -22,19 +22,19 @@ class TimerControls extends Component {
       if (this.props.hasControls) {
         return (
           <div style={styles.container}>
-            <Button icon='stop' onClick={() => this.props.setTime(0)} />
+            <Button icon='bars' onClick={this.props.toggleControlsVisiblity} />
             <Button icon='clock-o' text='5m' onClick={() => this.props.setTime(5)} />
             <Button icon='clock-o' text='10m'  onClick={() => this.props.setTime(10)} />
             <Button icon='clock-o' text='15m'  onClick={() => this.props.setTime(15)} />
             <Button icon='clock-o' text='20m'  onClick={() => this.props.setTime(20)} />
             <Button icon='clock-o' text='Custom' onClick={this.getCustomInput.bind(this)} />
-            <Button icon='lock' onClick={this.props.toggleControlsVisiblity} noMarginRight />
+            <Button icon='stop' onClick={() => this.props.setTime(0)} noMarginRight />
           </div>
         )
       } else {
         return (
           <div style={styles.container}>
-            <Button icon='unlock-alt' type='info' onClick={this.props.toggleControlsVisiblity} noMarginRight />
+            <Button icon='bars' type='info' onClick={this.props.toggleControlsVisiblity} noMarginRight />
           </div>
         )
       }
