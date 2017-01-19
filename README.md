@@ -17,6 +17,9 @@ REACT_APP_FB_API_KEY=
 REACT_APP_FB_DATABASE_URL=
 ```
 
+## Deploying
+After building for production through *npm run build* the application is ready to be deployed to a webhost. The easiest host is Firebase using their [firebase-tools](https://firebase.google.com/docs/hosting/deploying) CLI.
+
 ## Commands
 ``` bash
 # install dependencies
