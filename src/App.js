@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Router, Route, browserHistory } from 'react-router'
 import { StyleRoot, Style } from 'radium'
 import { COLOURS, SIZE } from './config/vars.js'
-import Home from './pages/Home'
+import HomeContainer from './pages/HomeContainer'
 import Live from './pages/Live'
 
 class App extends Component {
@@ -31,7 +31,7 @@ class App extends Component {
       <StyleRoot>
         <Style rules={styles} />
         <Router history={browserHistory}>
-          <Route path='/' component={Home} />
+          <Route path='/' component={HomeContainer} />
           <Route path='/:path' component={Live} />
         </Router>
       </StyleRoot>
