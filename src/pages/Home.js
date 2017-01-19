@@ -21,9 +21,9 @@ const Home = (props) => {
 
 Home.propTypes = {
   path: React.PropTypes.string.isRequired,
-  isClearPath: React.PropTypes.bool,
-  handleInputChange: React.PropTypes.func,
-  handleCreateTimerButton: React.PropTypes.func,
+  isClearPath: React.PropTypes.bool.isRequired,
+  handleInputChange: React.PropTypes.func.isRequired,
+  handleCreateTimerButton: React.PropTypes.func.isRequired,
 }
 
 export default Home
