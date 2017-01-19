@@ -19,4 +19,13 @@ const Live = (props) => {
   )
 }
 
+Live.PropTypes = {
+  path: React.PropTypes.string.isRequired,
+  isLoaded: React.PropTypes.bool.isRequired,
+  hasControls: React.PropTypes.bool.isRequired,
+  endTime: React.PropTypes.number.isRequired,
+  toggleControlsVisiblity: React.PropTypes.func.isRequired,
+  setTime: React.PropTypes.func.isRequired,
+}
+
 export default Live
