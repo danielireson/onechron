@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Radium from 'radium'
 import { SIZE } from '../config/vars.js'
-import Button from '../components/Button'
+import Button from './Button'
 
 class TimerControls extends Component {
   getCustomInput() {
