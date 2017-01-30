@@ -20,7 +20,7 @@ class LiveContainer extends Component {
   }
 
   componentWillMount() {
-    this.firebaseRef = firebase.database().ref(this.props.params.path)
+    this.firebaseRef = firebase.database().ref(this.props.params.path.toLowerCase())
     this._setStateFromFirebaseOrRedirectHome()
   }
 

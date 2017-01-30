@@ -48,7 +48,7 @@ class HomeContainer extends Component {
   }
 
   handleCreateTimerButton() {
-    this.firebaseRef.child(this.state.path).set({
+    this.firebaseRef.child(this.state.path.toLowerCase()).set({
       createdAt: firebase.database.ServerValue.TIMESTAMP,
       endTime: firebase.database.ServerValue.TIMESTAMP,
     }, () => {
