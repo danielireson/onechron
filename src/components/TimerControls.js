@@ -23,6 +23,7 @@ class TimerControls extends Component {
         return (
           <div style={styles.container}>
             <Button icon='bars' onClick={this.props.toggleControlsVisiblity} />
+            <Button icon='clock-o' text='1m' onClick={() => this.props.setTime(1)} />
             <Button icon='clock-o' text='5m' onClick={() => this.props.setTime(5)} />
             <Button icon='clock-o' text='10m'  onClick={() => this.props.setTime(10)} />
             <Button icon='clock-o' text='15m'  onClick={() => this.props.setTime(15)} />
