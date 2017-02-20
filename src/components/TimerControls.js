@@ -21,16 +21,20 @@ class TimerControls extends Component {
     if (this.props.isLoaded) {
       if (this.props.hasControls) {
         return (
-          <div style={styles.container}>
-            <Button icon='bars' onClick={this.props.toggleControlsVisiblity} />
-            <Button icon='eye' onClick={this.props.toggleLinkVisibility} />
-            <Button icon='clock-o' text='1m' onClick={() => this.props.setTime(1)} />
-            <Button icon='clock-o' text='5m' onClick={() => this.props.setTime(5)} />
-            <Button icon='clock-o' text='10m'  onClick={() => this.props.setTime(10)} />
-            <Button icon='clock-o' text='15m'  onClick={() => this.props.setTime(15)} />
-            <Button icon='clock-o' text='20m'  onClick={() => this.props.setTime(20)} />
-            <Button icon='clock-o' text='Custom' onClick={this.getCustomInput.bind(this)} />
-            <Button icon='stop' onClick={() => this.props.setTime(0)} noMarginRight />
+          <div>
+            <div style={styles.container}>
+              <Button icon='bars' onClick={this.props.toggleControlsVisiblity} />
+            </div>
+            <div style={styles.container}>
+              <Button icon='eye' onClick={this.props.toggleLinkVisibility} />
+              <Button icon='clock-o' text='1m' onClick={() => this.props.setTime(1)} />
+              <Button icon='clock-o' text='5m' onClick={() => this.props.setTime(5)} />
+              <Button icon='clock-o' text='10m'  onClick={() => this.props.setTime(10)} />
+              <Button icon='clock-o' text='15m'  onClick={() => this.props.setTime(15)} />
+              <Button icon='clock-o' text='20m'  onClick={() => this.props.setTime(20)} />
+              <Button icon='clock-o' text='Custom' onClick={this.getCustomInput.bind(this)} />
+              <Button icon='stop' onClick={() => this.props.setTime(0)} noMarginRight />
+            </div>
           </div>
         )
       } else {
