@@ -16,6 +16,12 @@ class TimerControls extends Component {
       container: {
         marginBottom: SIZE.px(4),
       },
+      controlsHeader: {
+        fontSize: SIZE.em(1),
+        textTransform: 'uppercase',
+        marginTop: 0,
+        marginBottom: SIZE.px(2)
+      }
     }
 
     if (this.props.isLoaded) {
@@ -26,6 +32,7 @@ class TimerControls extends Component {
               <Button icon='bars' onClick={this.props.toggleControlsVisiblity} />
             </div>
             <div style={styles.container}>
+              <h6 style={styles.controlsHeader}>Timer controls</h6>
               <Button icon='eye' onClick={this.props.toggleLinkVisibility} />
               <Button icon='clock-o' text='1m' onClick={() => this.props.setTime(1)} />
               <Button icon='clock-o' text='5m' onClick={() => this.props.setTime(5)} />
