@@ -75,17 +75,22 @@ class TimerLink extends Component {
       },
     }
 
-    return (
-      <h1 onClick={this.onClick} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} style={styles.url}>
-        <span style={styles.tooltip}>{this.state.tooltip}</span>
-        {this.baseUrl + this.props.path}
-      </h1>
-    )
+    if (this.props.hasLink) {
+      return (
+        <h1 onClick={this.onClick} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} style={styles.url}>
+          <span style={styles.tooltip}>{this.state.tooltip}</span>
+          {this.baseUrl + this.props.path}
+        </h1>
+      )
+    }
+
+    return null
   }
 }
 
 TimerLink.propTypes = {
-  path: React.PropTypes.string.isRequired
+  path: React.PropTypes.string.isRequired,
+  hasLink: React.PropTypes.bool.isRequired,
 }
 
 export default Radium(TimerLink)

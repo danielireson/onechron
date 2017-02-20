@@ -11,9 +11,14 @@ const Live = (props) => {
     <div>
       <Clock />
       <FullScreenButton />
-      <TimerLink path={props.path} />
+      <TimerLink hasLink={props.hasLink} path={props.path} />
       <Timer isLoaded={props.isLoaded} endTime={props.endTime} />
-      <TimerControls isLoaded={props.isLoaded} hasControls={props.hasControls} setTime={props.setTime} toggleControlsVisiblity={props.toggleControlsVisiblity} />
+      <TimerControls 
+        isLoaded={props.isLoaded} 
+        hasControls={props.hasControls} 
+        setTime={props.setTime} 
+        toggleControlsVisiblity={props.toggleControlsVisiblity} 
+        toggleLinkVisibility={props.toggleLinkVisibility} />
       <Footer />
     </div>
   )
@@ -23,8 +28,10 @@ Live.PropTypes = {
   path: React.PropTypes.string.isRequired,
   isLoaded: React.PropTypes.bool.isRequired,
   hasControls: React.PropTypes.bool.isRequired,
+  hasLink: React.PropTypes.bool.isRequired,
   endTime: React.PropTypes.number.isRequired,
   toggleControlsVisiblity: React.PropTypes.func.isRequired,
+  toggleLinkVisibility: React.PropTypes.func.isRequired,
   setTime: React.PropTypes.func.isRequired,
 }
 

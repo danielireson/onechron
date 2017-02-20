@@ -23,6 +23,7 @@ class TimerControls extends Component {
         return (
           <div style={styles.container}>
             <Button icon='bars' onClick={this.props.toggleControlsVisiblity} />
+            <Button icon='eye' onClick={this.props.toggleLinkVisibility} />
             <Button icon='clock-o' text='1m' onClick={() => this.props.setTime(1)} />
             <Button icon='clock-o' text='5m' onClick={() => this.props.setTime(5)} />
             <Button icon='clock-o' text='10m'  onClick={() => this.props.setTime(10)} />
@@ -50,6 +51,7 @@ TimerControls.PropTypes = {
   hasControls: React.PropTypes.bool.isRequired,
   setTime: React.PropTypes.func.isRequired,
   toggleControlsVisiblity: React.PropTypes.func.isRequired,
+  toggleLinkVisibility: React.PropTypes.func.isRequired,
 }
 
 export default Radium(TimerControls)

@@ -14,8 +14,10 @@ class LiveContainer extends Component {
       endTime: 0,
       isLoaded: false,
       hasControls: false,
+      hasLink: true,
     }
     this.toggleControlsVisiblity = this.toggleControlsVisiblity.bind(this)
+    this.toggleLinkVisibility = this.toggleLinkVisibility.bind(this)
     this.setTime = this.setTime.bind(this)
   }
 
@@ -38,6 +40,18 @@ class LiveContainer extends Component {
         hasControls: true
       })
     }
+  }
+
+  toggleLinkVisibility() {
+    if (this.state.hasLink) {
+      this.setState({
+        hasLink: false
+      })
+    } else {
+      this.setState({
+        hasLink: true
+      })
+    }    
   }
 
   setTime(minutes) {
@@ -71,8 +85,10 @@ class LiveContainer extends Component {
         path={this.props.params.path}
         isLoaded={this.state.isLoaded}
         hasControls={this.state.hasControls}
+        hasLink={this.state.hasLink}
         endTime={this.state.endTime}
         toggleControlsVisiblity={this.toggleControlsVisiblity}
+        toggleLinkVisibility={this.toggleLinkVisibility}
         setTime={this.setTime}
       />
     )
