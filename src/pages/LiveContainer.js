@@ -41,7 +41,7 @@ class LiveContainer extends Component {
   }
 
   setTime(minutes) {
-    let endTime = new Date().getTime() + minutes * 60 * 1000
+    let endTime = new Date().getTime() + minutes * 60 * 1000 + 1000
     this.firebaseRef.update({
       endTime: endTime
     })
