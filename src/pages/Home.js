@@ -11,7 +11,7 @@ const Home = (props) => {
     <div>
       <Clock />
       <FullScreenButton />
-      <TimerLink path={props.path} />
+      <TimerLink hasLink={true} path={props.path} />
       <CustomPathInput path={props.path} isClearPath={props.isClearPath} handleInputChange={props.handleInputChange} />
       <Button text='Create timer' type='success' onClick={props.handleCreateTimerButton} isDisabled={!props.isClearPath} noMarginRight />
       <Footer />
