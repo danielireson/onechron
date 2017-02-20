@@ -12,6 +12,7 @@ class LiveContainer extends Component {
     this.state = {
       createdAt: 0,
       endTime: 0,
+      fontSize: 100,
       isLoaded: false,
       hasControls: false,
       hasLink: true,
@@ -19,6 +20,7 @@ class LiveContainer extends Component {
     this.toggleControlsVisiblity = this.toggleControlsVisiblity.bind(this)
     this.toggleLinkVisibility = this.toggleLinkVisibility.bind(this)
     this.setTime = this.setTime.bind(this)
+    this.handleFontSizeChange = this.handleFontSizeChange.bind(this)
   }
 
   componentWillMount() {
@@ -54,6 +56,12 @@ class LiveContainer extends Component {
     }    
   }
 
+  handleFontSizeChange(event) {
+    this.setState({
+      fontSize: Number(event.target.value)
+    })
+  }
+
   setTime(minutes) {
     let endTime = new Date().getTime() + minutes * 60 * 1000 + 1000
     this.firebaseRef.update({
@@ -87,6 +95,8 @@ class LiveContainer extends Component {
         hasControls={this.state.hasControls}
         hasLink={this.state.hasLink}
         endTime={this.state.endTime}
+        fontSize={this.state.fontSize}
+        handleFontSizeChange={this.handleFontSizeChange}
         toggleControlsVisiblity={this.toggleControlsVisiblity}
         toggleLinkVisibility={this.toggleLinkVisibility}
         setTime={this.setTime}

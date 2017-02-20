@@ -46,8 +46,15 @@ class Timer extends Component {
     return this.state.minutes + 'm ' + this.state.seconds + 's - ' + APP_NAME
   }
 
+  getFontSize() {
+    return this.props.fontSize.toString() + '%'
+  }
+
   render() {
     const styles = {
+      timer: {
+        fontSize: this.getFontSize()
+      },
       h1: {
         display: 'block',
         fontSize: SIZE.em(10),
@@ -76,7 +83,7 @@ class Timer extends Component {
 
     if (this.props.isLoaded) {
       return (
-        <div>
+        <div style={styles.timer}>
           <h1 style={styles.h1}>{this.state.minutes}<small style={styles.small}>M</small></h1>
           <h1 style={[styles.h1, styles.noMarginRight]}>{this.state.seconds}<small style={styles.small}>S</small></h1>
         </div>
@@ -90,6 +97,7 @@ class Timer extends Component {
 Timer.propTypes = {
   endTime: React.PropTypes.number.isRequired,
   isLoaded: React.PropTypes.bool.isRequired,
+  fontSize: React.PropTypes.number.isRequired,
 }
 
 export default Radium(Timer)

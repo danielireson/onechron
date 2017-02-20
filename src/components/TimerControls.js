@@ -9,7 +9,7 @@ class TimerControls extends Component {
     if (Number.isInteger(input)) {
       this.props.setTime(input)
     }
-  }  
+  }
 
   render() {
     const styles = {
@@ -41,6 +41,10 @@ class TimerControls extends Component {
               <Button icon='clock-o' text='20m'  onClick={() => this.props.setTime(20)} />
               <Button icon='clock-o' text='Custom' onClick={this.getCustomInput.bind(this)} />
               <Button icon='stop' onClick={() => this.props.setTime(0)} noMarginRight />
+            </div>
+            <div style={styles.container}>
+              <h6 style={styles.controlsHeader}>Timer font size</h6>
+              <input type="range" min="100" max="200" value={this.props.fontSize} onChange={this.props.handleFontSizeChange} />
             </div>
           </div>
         )

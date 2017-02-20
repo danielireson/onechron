@@ -12,13 +12,19 @@ const Live = (props) => {
       <Clock />
       <FullScreenButton />
       <TimerLink hasLink={props.hasLink} path={props.path} />
-      <Timer isLoaded={props.isLoaded} endTime={props.endTime} />
+      <Timer 
+        isLoaded={props.isLoaded} 
+        endTime={props.endTime} 
+        fontSize={props.fontSize} />
       <TimerControls 
         isLoaded={props.isLoaded} 
         hasControls={props.hasControls} 
         setTime={props.setTime} 
+        fontSize={props.fontSize}
+        handleFontSizeChange={props.handleFontSizeChange} 
         toggleControlsVisiblity={props.toggleControlsVisiblity} 
-        toggleLinkVisibility={props.toggleLinkVisibility} />
+        toggleLinkVisibility={props.toggleLinkVisibility}
+      />
       <Footer />
     </div>
   )
@@ -30,8 +36,10 @@ Live.PropTypes = {
   hasControls: React.PropTypes.bool.isRequired,
   hasLink: React.PropTypes.bool.isRequired,
   endTime: React.PropTypes.number.isRequired,
+  fontSize: React.PropTypes.number.isRequired,
   toggleControlsVisiblity: React.PropTypes.func.isRequired,
   toggleLinkVisibility: React.PropTypes.func.isRequired,
+  handleFontSizeChange: React.PropTypes.func.isRequired,
   setTime: React.PropTypes.func.isRequired,
 }
 
