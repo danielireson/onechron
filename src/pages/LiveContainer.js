@@ -99,8 +99,7 @@ class LiveContainer extends Component {
         handleFontSizeChange={this.handleFontSizeChange}
         toggleControlsVisiblity={this.toggleControlsVisiblity}
         toggleLinkVisibility={this.toggleLinkVisibility}
-        setTime={this.setTime}
-      />
+        setTime={this.setTime} />
     )
   }
 }

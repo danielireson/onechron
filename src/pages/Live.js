@@ -23,8 +23,7 @@ const Live = (props) => {
         fontSize={props.fontSize}
         handleFontSizeChange={props.handleFontSizeChange} 
         toggleControlsVisiblity={props.toggleControlsVisiblity} 
-        toggleLinkVisibility={props.toggleLinkVisibility}
-      />
+        toggleLinkVisibility={props.toggleLinkVisibility} />
       <Footer />
     </div>
   )

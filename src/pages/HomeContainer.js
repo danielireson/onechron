@@ -131,8 +131,7 @@ class HomeContainer extends Component {
         path={this.state.path}
         isClearPath={this.state.isClearPath}
         handleInputChange={this.handleInputChange} 
-        handleCreateTimerButton={this.handleCreateTimerButton}
-      />
+        handleCreateTimerButton={this.handleCreateTimerButton} />
     )
   }
 }
