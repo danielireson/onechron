@@ -56,14 +56,13 @@ class Timer extends Component {
         fontSize: this.getFontSize()
       },
       h1: {
-        display: 'block',
-        fontSize: SIZE.em(10),
-        marginBottom: 0,
+        display: 'inline-block',
+        fontSize: SIZE.em(5),
+        marginBottom: SIZE.px(2),
         marginRight: SIZE.px(4),
         marginTop: 0,
         [BP.MEDIUM] : {
           fontSize: SIZE.em(14),
-          display: 'inline-block',
         },
         [BP.LARGE] : {
           fontSize: SIZE.em(20),
