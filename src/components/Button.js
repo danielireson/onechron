@@ -71,11 +71,15 @@ class Button extends Component {
       },
     }
 
-    return (
-      <button onClick={this.props.onClick} style={this.getButtonStyle(styles)} disabled={this.props.isDisabled}>
-        {this.props.icon && <FontAwesome name={this.props.icon} />} {this.props.text}
-      </button>
-    )
+    if (!this.props.isHidden) {
+      return (
+        <button onClick={this.props.onClick} style={this.getButtonStyle(styles)} disabled={this.props.isDisabled}>
+          {this.props.icon && <FontAwesome name={this.props.icon} />} {this.props.text}
+        </button>
+      )
+    }
+
+    return null
   }
 }
 
@@ -86,6 +90,7 @@ Button.propTypes = {
   onClick: React.PropTypes.func,
   noMarginRight: React.PropTypes.bool,
   isDisabled: React.PropTypes.bool,
+  isHidden: React.PropTypes.bool,
 }
 
 export default Radium(Button)
