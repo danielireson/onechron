@@ -90,7 +90,7 @@ class TimerControls extends Component {
         return (
           <div>
             <div style={styles.container}>
-              <Button icon='bars' onClick={this.props.toggleControlsVisiblity} />
+              <Button icon='bars' type='info' onClick={this.props.toggleControlsVisiblity} />
             </div>
             <div style={styles.container}>
               <h6 style={styles.controlsHeader}>Timer controls</h6>
