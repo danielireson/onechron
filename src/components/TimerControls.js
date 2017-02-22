@@ -57,6 +57,12 @@ class TimerControls extends Component {
         marginTop: 0,
         marginBottom: SIZE.px(2),
       },
+      linkVisibilityButton: {
+        display: 'none',
+        [BP.MEDIUM]: { 
+          display: 'inline-block'
+        }
+      },
       customTimeControls: {
         display: this.getCustomTimeControlsDisplay()
       },
@@ -88,7 +94,9 @@ class TimerControls extends Component {
             </div>
             <div style={styles.container}>
               <h6 style={styles.controlsHeader}>Timer controls</h6>
-              <Button icon='eye' onClick={this.props.toggleLinkVisibility} />
+              <span style={styles.linkVisibilityButton}>
+                <Button icon='eye' onClick={this.props.toggleLinkVisibility} />
+              </span>
               <Button icon='clock-o' text='1m' onClick={() => this.props.setTime(1)} />
               <Button icon='clock-o' text='5m' onClick={() => this.props.setTime(5)} />
               <Button icon='clock-o' text='10m'  onClick={() => this.props.setTime(10)} />
