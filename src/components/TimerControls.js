@@ -57,7 +57,7 @@ class TimerControls extends Component {
         marginTop: 0,
         marginBottom: SIZE.px(2),
       },
-      linkVisibilityButton: {
+      hideOnMobile: {
         display: 'none',
         [BP.MEDIUM]: { 
           display: 'inline-block'
@@ -94,7 +94,7 @@ class TimerControls extends Component {
             </div>
             <div style={styles.container}>
               <h6 style={styles.controlsHeader}>Timer controls</h6>
-              <span style={styles.linkVisibilityButton}>
+              <span style={styles.hideOnMobile}>
                 <Button icon='eye' onClick={this.props.toggleLinkVisibility} />
               </span>
               <Button icon='clock-o' text='1m' onClick={() => this.props.setTime(1)} />
@@ -111,7 +111,7 @@ class TimerControls extends Component {
               <Button onClick={this.setCustomTime} type='success' text='Set' />
               <Button onClick={this.toggleCustomTimeControls} type='danger' text='Cancel' />
             </div>
-            <div style={styles.container}>
+            <div style={[styles.container, styles.hideOnMobile]}>
               <h6 style={styles.controlsHeader}>Timer font size</h6>
               <input type='range' min='100' max='200' value={this.props.fontSize} onChange={this.props.handleFontSizeChange} />
             </div>
