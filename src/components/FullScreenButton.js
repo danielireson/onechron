@@ -5,11 +5,11 @@ import screenfull from 'screenfull'
 import { COLOURS, SIZE } from '../config/vars.js'
 
 class FullScreenButton extends Component {
-  handleButtonClick() {
+  _handleButtonClick() {
     screenfull.toggle()
   }
 
-  getButtonDisplayProperty() {
+  _getButtonDisplayProperty() {
     if (screenfull.enabled) {
       return 'block'
     }
@@ -23,7 +23,7 @@ class FullScreenButton extends Component {
         border: 'none',
         color: COLOURS.DARK_BLUE,
         cursor: 'pointer',
-        display: this.getButtonDisplayProperty(),
+        display: this._getButtonDisplayProperty(),
         fontSize: SIZE.em(2),
         padding: 0,
         position: 'absolute',
@@ -33,7 +33,7 @@ class FullScreenButton extends Component {
     }
 
     return (
-      <button onClick={this.handleButtonClick} style={styles.button}>
+      <button onClick={this._handleButtonClick} style={styles.button}>
         <FontAwesome name='arrows-alt' />
       </button>
     )

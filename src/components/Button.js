@@ -4,7 +4,7 @@ import Radium from 'radium'
 import { COLOURS, SIZE, BP } from '../config/vars.js'
 
 class Button extends Component {
-  getButtonStyle(styles) {
+  _getButtonStyle(styles) {
     let buttonStyle = []
     buttonStyle.push(styles.button)
 
@@ -73,7 +73,7 @@ class Button extends Component {
 
     if (!this.props.isHidden) {
       return (
-        <button onClick={this.props.onClick} style={this.getButtonStyle(styles)} disabled={this.props.isDisabled}>
+        <button onClick={this.props.onClick} style={this._getButtonStyle(styles)} disabled={this.props.isDisabled}>
           {this.props.icon && <FontAwesome name={this.props.icon} />} {this.props.text}
         </button>
       )

@@ -14,46 +14,46 @@ class Timer extends Component {
   }
 
   componentWillMount() {
-    this.calculateTime()
-    this.timer = window.setInterval(() => this.calculateTime(), 1000)
+    this._calculateTime()
+    this.timer = window.setInterval(() => this._calculateTime(), 1000)
   }
 
   componentWillUnmount() {
     window.clearInterval(this.timer)
   }
 
-  calculateTime() {
+  _calculateTime() {
     let totalSeconds = (new Date(this.props.endTime) - new Date()) / 1000
     let minutes = Math.floor(totalSeconds / 60)
     let seconds = Math.floor(totalSeconds - (minutes * 60))
     if (minutes >= 0) {
-      this.setStateTime(minutes, seconds)
+      this._setStateTime(minutes, seconds)
     } else {
-      this.setStateTime(0, 0)
+      this._setStateTime(0, 0)
     }
   }
 
-  setStateTime(minutes, seconds) {
+  _setStateTime(minutes, seconds) {
     this.setState({
       minutes: minutes,
       seconds: seconds,      
     }, () => {
-      document.title = this.generatePageTitle()
+      document.title = this._generatePageTitle()
     })
   }
 
-  generatePageTitle() {
+  _generatePageTitle() {
     return this.state.minutes + 'm ' + this.state.seconds + 's - ' + APP_NAME
   }
 
-  getFontSize() {
+  _getFontSize() {
     return this.props.fontSize.toString() + '%'
   }
 
   render() {
     const styles = {
       timer: {
-        fontSize: this.getFontSize()
+        fontSize: this._getFontSize()
       },
       h1: {
         display: 'inline-block',

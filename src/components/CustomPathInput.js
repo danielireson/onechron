@@ -3,7 +3,7 @@ import Radium from 'radium'
 import { COLOURS, SIZE } from '../config/vars.js'
 
 class CustomPathInput extends Component {
-  getStatusBackground() {
+  _getStatusBackground() {
     if (this.props.isClearPath) {
       return COLOURS.GREEN
     }
@@ -17,7 +17,7 @@ class CustomPathInput extends Component {
         width: '100%',
       },
       status: {
-        background: this.getStatusBackground(),
+        background: this._getStatusBackground(),
         borderRadius: SIZE.px(3),
         height: SIZE.px(6),
         position: 'absolute',
