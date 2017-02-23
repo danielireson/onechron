@@ -14,6 +14,7 @@ class TimerControls extends Component {
   }
 
   _toggleCustomTimeControls() {
+    let input = document.getElementById('custom-time-input')
     if (this.state.hasCustomTimeControls) {
       this.setState({
         hasCustomTimeControls: false
@@ -21,11 +22,8 @@ class TimerControls extends Component {
     } else {
       this.setState({
         hasCustomTimeControls: true
-      }, () => {
-        document.getElementById('custom-time-input').focus()
-      })      
+      }, () => input.focus())      
     }
-    let input = document.getElementById('custom-time-input')
     input.value = ''
   }
 
