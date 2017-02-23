@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Router, Route, browserHistory } from 'react-router'
 import { StyleRoot, Style } from 'radium'
+import DevTools from 'mobx-react-devtools'
 import { COLOURS, SIZE } from './config/vars.js'
 import HomeContainer from './pages/HomeContainer'
 import LiveContainer from './pages/LiveContainer'
@@ -34,6 +35,7 @@ class App extends Component {
           <Route path='/' component={HomeContainer} />
           <Route path='/:path' component={LiveContainer} />
         </Router>
+        <DevTools />
       </StyleRoot>
     )
   }
