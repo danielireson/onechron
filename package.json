@@ -30,6 +30,7 @@
     "html-webpack-plugin": "2.24.0",
     "http-proxy-middleware": "0.17.2",
     "json-loader": "0.5.4",
+    "mobx-react-devtools": "^4.2.11",
     "object-assign": "4.1.0",
     "path-exists": "2.1.0",
     "postcss-loader": "1.0.0",
@@ -47,6 +48,8 @@
   "dependencies": {
     "copy-to-clipboard": "^3.0.5",
     "firebase": "^3.6.5",
+    "mobx": "^3.1.0",
+    "mobx-react": "^4.1.0",
     "radium": "^0.18.1",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
