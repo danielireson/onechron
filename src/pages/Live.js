@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 
-import { APP_NAME } from '../config/vars.js'
 import TimerStore from '../stores/TimerStore'
 
 import Clock from '../components/Clock'
@@ -12,11 +11,6 @@ import TimerLink from '../components/TimerLink'
 import TimerControls from '../components/TimerControls'
 
 class Live extends Component {
-  constructor() {
-    super()
-    document.title = APP_NAME
-  }
-
   componentWillMount() {
     this.checkTimerExists()
   }

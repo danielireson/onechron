@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { browserHistory } from 'react-router'
 import { observer } from 'mobx-react'
 
-import { APP_NAME } from '../config/vars.js'
+import { APP_NAME } from '../config/vars'
 import TimerStore from '../stores/TimerStore'
 
 import Button from '../components/Button'
