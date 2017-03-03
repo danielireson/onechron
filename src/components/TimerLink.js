@@ -59,10 +59,11 @@ class TimerLink extends Component {
   render() {
     const styles = {
       url: {
-        fontWeight: '300',
+        display: 'none',
         fontSize: SIZE.em(2),
+        fontWeight: '300',
         marginBottom: SIZE.px(4),
-        opacity: this.getUrlOpacityProperty(),
+        opacity: 0,
         position: 'relative',
         transition: 'opacity 0.25s ease-in-out',
         userSelect: 'none',
@@ -71,6 +72,7 @@ class TimerLink extends Component {
         },
         [BP.MEDIUM] : {
           display: 'inline-block',
+          opacity: this.getUrlOpacityProperty(),
         },
       },
       tooltip: {
