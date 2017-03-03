@@ -11,15 +11,15 @@ import UiState from '../stores/UiState'
 class Timer extends Component {
   componentWillMount() {
     TimerStore.subscribeToTimerUpdates()
-    this._calculateTime()
-    TimerStore.timer.timerRef = window.setInterval(() => this._calculateTime(), 1000)
+    this.calculateTime()
+    TimerStore.timer.timerRef = window.setInterval(() => this.calculateTime(), 1000)
   }
 
   componentWillUnmount() {
     window.clearInterval(TimerStore.timer.timerRef)
   }
 
-  _calculateTime() {
+  calculateTime() {
     let totalSeconds = (new Date(TimerStore.timer.endTime) - new Date()) / 1000
     let minutes = Math.floor(totalSeconds / 60)
     let seconds = Math.floor(totalSeconds - (minutes * 60))
@@ -30,21 +30,21 @@ class Timer extends Component {
       TimerStore.timer.minutes = 0
       TimerStore.timer.seconds = 0
     }
-    document.title = this._generatePageTitle()
+    document.title = this.generatePageTitle()
   }
 
-  _generatePageTitle() {
+  generatePageTitle() {
     return TimerStore.timer.minutes + 'm ' + TimerStore.timer.seconds + 's - ' + APP_NAME
   }
 
-  _getFontSize() {
+  getFontSize() {
     return UiState.fontSize.toString() + '%'
   }
 
   render() {
     const styles = {
       timer: {
-        fontSize: this._getFontSize()
+        fontSize: this.getFontSize()
       },
       h1: {
         display: 'inline-block',

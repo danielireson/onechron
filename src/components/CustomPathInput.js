@@ -7,12 +7,12 @@ import TimerStore from '../stores/TimerStore'
 
 @observer
 class CustomPathInput extends Component {
-  _onChange(event) {
+  onChange(event) {
     let input = event.target.value.replace(' ', '').toLowerCase()
     TimerStore.setPath(input)
   }
 
-  _getStatusBackground() {
+  getStatusBackground() {
     if (TimerStore.isClearPath) {
       return COLOURS.GREEN
     }
@@ -26,7 +26,7 @@ class CustomPathInput extends Component {
         width: '100%',
       },
       status: {
-        background: this._getStatusBackground(),
+        background: this.getStatusBackground(),
         borderRadius: SIZE.px(3),
         height: SIZE.px(6),
         position: 'absolute',
@@ -51,9 +51,9 @@ class CustomPathInput extends Component {
       <div style={styles.container}>
         <div style={styles.status}></div>
         <input
-          style={styles.input} 
-          value={TimerStore.path} 
-          onChange={this._onChange} 
+          style={styles.input}
+          value={TimerStore.path}
+          onChange={this.onChange}
           type='text'
           placeholder='...'
           spellCheck='false'

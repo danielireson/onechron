@@ -15,11 +15,11 @@ class TimerControls extends Component {
     this.state = {
       hasCustomTimeControls: false
     }
-    this._setCustomTime = this._setCustomTime.bind(this)
-    this._toggleCustomTimeControls = this._toggleCustomTimeControls.bind(this)
+    this.setCustomTime = this.setCustomTime.bind(this)
+    this.toggleCustomTimeControls = this.toggleCustomTimeControls.bind(this)
   }
 
-  _toggleCustomTimeControls() {
+  toggleCustomTimeControls() {
     let input = document.getElementById('custom-time-input')
     if (this.state.hasCustomTimeControls) {
       this.setState({
@@ -33,16 +33,16 @@ class TimerControls extends Component {
     input.value = ''
   }
 
-  _setCustomTime() {
+  setCustomTime() {
     let input = document.getElementById('custom-time-input')
     let time = Number(input.value)
     if (Number.isInteger(time)) {
       TimerStore.setTime(time)
-      this._toggleCustomTimeControls()
+      this.toggleCustomTimeControls()
     }
   }
 
-  _getCustomTimeControlsDisplay() {
+  getCustomTimeControlsDisplay() {
     if (this.state.hasCustomTimeControls) {
       return 'block'
     } else {
@@ -68,7 +68,7 @@ class TimerControls extends Component {
         }
       },
       customTimeControls: {
-        display: this._getCustomTimeControlsDisplay()
+        display: this.getCustomTimeControlsDisplay()
       },
       input: {
         border: 'none',
@@ -106,13 +106,13 @@ class TimerControls extends Component {
               <Button icon='clock-o' text='10m'  onClick={() => TimerStore.setTime(10)} />
               <Button icon='clock-o' text='15m'  onClick={() => TimerStore.setTime(15)} />
               <Button icon='clock-o' text='20m'  onClick={() => TimerStore.setTime(20)} />
-              <Button icon='clock-o' text='Custom' onClick={this._toggleCustomTimeControls} />
+              <Button icon='clock-o' text='Custom' onClick={this.toggleCustomTimeControls} />
               <Button icon='stop' onClick={() => TimerStore.setTime(0)} noMarginRight />
             </div>
             <div style={[styles.customTimeControls, styles.container]}>
               <h6 style={styles.controlsHeader}>Set custom time (in minutes)</h6>
               <input id='custom-time-input' type='text' style={styles.input} placeholder='...' />
-              <Button onClick={this._setCustomTime} type='success' text='Set' />
+              <Button onClick={this.setCustomTime} type='success' text='Set' />
               <Button onClick={UiState.toggleCustomTimeControls} type='danger' text='Cancel' />
             </div>
             <div style={[styles.container, styles.hideOnMobile]}>

@@ -14,24 +14,24 @@ class Clock extends Component {
   }
 
   componentWillMount() {
-    this._getTime()
-    this.timer = window.setInterval(() => this._getTime(), 1000)
+    this.getTime()
+    this.timer = window.setInterval(() => this.getTime(), 1000)
   }
 
   componentWillUnmount() {
     window.clearInterval(this.timer)
   }
 
-  _getTime() {
+  getTime() {
     let now = new Date()
     this.setState({
-      hours: this._prependZeroCheck(now.getHours()),
-      minutes: this._prependZeroCheck(now.getMinutes()),
-      seconds: this._prependZeroCheck(now.getSeconds()),
+      hours: this.prependZeroCheck(now.getHours()),
+      minutes: this.prependZeroCheck(now.getMinutes()),
+      seconds: this.prependZeroCheck(now.getSeconds()),
     })
   }
 
-  _prependZeroCheck(number) {
+  prependZeroCheck(number) {
     let string = number.toString()
     if (string.length === 1) {
       return '0' + string
