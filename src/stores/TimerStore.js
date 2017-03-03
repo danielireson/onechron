@@ -1,4 +1,4 @@
-import { action, autorun, observable, reaction } from 'mobx'
+import { action, observable, reaction } from 'mobx'
 
 import firebase from './FirebaseStore'
 import UiState from './UiState'
@@ -61,12 +61,10 @@ class TimerStore {
   }
 
   @action subscribeToTimerUpdates() {
-    autorun(() => {
-      firebase.db.child(this.path).on('value', (snapshot) => {
-        let data = snapshot.val()
-        this.timer.createdAt = data.createdAt
-        this.timer.endTime = data.endTime
-      })
+    firebase.db.child(this.path).on('value', (snapshot) => {
+      let data = snapshot.val()
+      this.timer.createdAt = data.createdAt
+      this.timer.endTime = data.endTime
     })
     UiState.loading = false
   }
