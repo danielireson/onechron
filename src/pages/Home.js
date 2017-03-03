@@ -4,6 +4,7 @@ import { observer } from 'mobx-react'
 
 import { APP_NAME } from '../config/vars'
 import TimerStore from '../stores/TimerStore'
+import UiState from '../stores/UiState'
 
 import Button from '../components/Button'
 import Clock from '../components/Clock'
@@ -17,6 +18,7 @@ class Home extends Component {
   constructor() {
     super()
     document.title = APP_NAME
+    UiState.hasLink = true
   }
 
   handleCreateTimerButton() {
