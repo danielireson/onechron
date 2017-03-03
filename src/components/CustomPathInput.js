@@ -7,6 +7,11 @@ import TimerStore from '../stores/TimerStore'
 
 @observer
 class CustomPathInput extends Component {
+  constructor() {
+    super()
+    TimerStore.isClearPath = false
+  }
+
   onChange(event) {
     let input = event.target.value.replace(' ', '').toLowerCase()
     TimerStore.setPath(input)
