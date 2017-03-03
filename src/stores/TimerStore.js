@@ -16,6 +16,7 @@ class TimerStore {
 
   constructor() {
     this.subscribeToPathChecks()
+    this.clearOldFirebaseTimers()
   }
 
   setPath(path) {
@@ -68,6 +69,18 @@ class TimerStore {
       })
     })
     UiState.loading = false
+  }
+
+  clearOldFirebaseTimers() {
+    firebase.db.once('value').then((snapshot) => {
+      snapshot.forEach((timer) => {
+        let hours = (new Date(timer.val().endTime) - new Date()) / 1000 / 60 / 60
+        // Delete timer if finished over 24 hours ago
+        if (hours < -24) {
+          firebase.db.child(timer.key).remove()
+        }
+      })
+    })
   }
 
   setTime = (minutes) => {
