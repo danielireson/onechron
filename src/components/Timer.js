@@ -71,7 +71,7 @@ class Timer extends Component {
       },
     }
 
-    if (!TimerStore.loading) {
+    if (!UiState.loading) {
       return (
         <div style={styles.timer}>
           <h1 style={styles.h1}>{TimerStore.timer.minutes}<small style={styles.small}>M</small></h1>

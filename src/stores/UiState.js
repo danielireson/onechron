@@ -4,6 +4,7 @@ class UiState {
   @observable fontSize = 100 
   @observable hasControls = false
   @observable hasLink = true
+  @observable loading = true
 
   @action toggleControlsVisiblity = () => {
     this.hasControls = !this.hasControls

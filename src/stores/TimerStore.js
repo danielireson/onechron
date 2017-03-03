@@ -1,9 +1,9 @@
 import { action, autorun, observable, reaction } from 'mobx'
 
 import firebase from './FirebaseStore'
+import UiState from './UiState'
 
 class TimerStore {
-  @observable loading = true
   @observable path = ''
   @observable isClearPath = false
   @observable timer = {
@@ -67,7 +67,7 @@ class TimerStore {
         this.timer.endTime = data.endTime
       })
     })
-    this.loading = false
+    UiState.loading = false
   }
 
   setTime = (minutes) => {

@@ -89,7 +89,7 @@ class TimerControls extends Component {
       }
     }
 
-    if (!TimerStore.loading) {
+    if (!UiState.loading) {
       if (UiState.hasControls) {
         return (
           <div>
