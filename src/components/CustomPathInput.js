@@ -32,6 +32,7 @@ class CustomPathInput extends Component {
         position: 'absolute',
         right: SIZE.px(4),
         top: SIZE.px(2),
+        transition: 'background 0.25s ease-in-out',
         width: SIZE.px(6),
       },
       input: {

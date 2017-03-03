@@ -40,22 +40,31 @@ class TimerLink extends Component {
     this.hasTooltip = false
   }
 
-  getTooltipDisplayProperty() {
-    if (this.hasTooltip) {
-      return 'block'
+  getUrlOpacityProperty() {
+    if (UiState.hasLink) {
+      return 1
     } else {
-      return 'none'
+      return 0
+    }    
+  }
+
+  getTooltipOpacityProperty() {
+    if (this.hasTooltip) {
+      return 1
+    } else {
+      return 0
     }
   }
 
   render() {
     const styles = {
       url: {
-        display: 'none',
         fontWeight: '300',
         fontSize: SIZE.em(2),
         marginBottom: SIZE.px(4),
+        opacity: this.getUrlOpacityProperty(),
         position: 'relative',
+        transition: 'opacity 0.25s ease-in-out',
         userSelect: 'none',
         ':hover': {
           cursor: 'copy',
@@ -68,28 +77,25 @@ class TimerLink extends Component {
         background: COLOURS.DARK_BLUE,
         borderRadius: SIZE.px(1),
         color: COLOURS.WHITE,
-        display: this.getTooltipDisplayProperty(),
         fontSize: '50%',
+        opacity: this.getTooltipOpacityProperty(),
         paddingTop: SIZE.px(2),
         paddingBottom: SIZE.px(2),
         position: 'absolute',
         top: '-' + SIZE.em(3),
+        transition: 'opacity 0.25s ease-in-out',
         left: 0,
         width: '100%',
         zIndex: '100',
       },
     }
 
-    if (UiState.hasLink) {
-      return (
-        <h1 onClick={this.onClick} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} style={styles.url}>
-          <span style={styles.tooltip}>{this.tooltip}</span>
-          {this.baseUrl + TimerStore.path}
-        </h1>
-      )
-    }
-
-    return null
+    return (
+      <h1 onClick={this.onClick} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} style={styles.url}>
+        <span style={styles.tooltip}>{this.tooltip}</span>
+        {this.baseUrl + TimerStore.path}
+      </h1>
+    )
   }
 }
 

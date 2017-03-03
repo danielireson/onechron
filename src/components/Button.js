@@ -31,6 +31,7 @@ class Button extends Component {
         marginRight: SIZE.px(1),
         marginBottom: SIZE.px(2),
         padding: SIZE.px(2),
+        transition: 'opacity 0.25s ease-in-out',
         width: '100%',
         whiteSpace: 'nowrap',
         ':hover': {
