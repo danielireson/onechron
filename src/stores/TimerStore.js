@@ -19,6 +19,16 @@ class TimerStore {
     this.clearOldFirebaseTimers()
   }
 
+  @action resetTimer() {
+    this.timer = {
+      timerRef: null,
+      createdAt: null,
+      endTime: null,
+      minutes: 0,
+      seconds: 0      
+    }
+  }
+
   @action setPath(path) {
     this.path = path
   }

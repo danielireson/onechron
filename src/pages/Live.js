@@ -11,6 +11,11 @@ import TimerLink from '../components/TimerLink'
 import TimerControls from '../components/TimerControls'
 
 class Live extends Component {
+  constructor() {
+    super()
+    TimerStore.resetTimer()
+  }
+
   componentWillMount() {
     this.checkTimerExists()
   }
