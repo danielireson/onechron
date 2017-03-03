@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { browserHistory } from 'react-router'
 import Radium from 'radium'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
@@ -46,6 +47,10 @@ class TimerControls extends Component {
     } else {
       return 0
     }
+  }
+
+  navHome() {
+    browserHistory.push('/')
   }
 
   render() {
@@ -98,6 +103,7 @@ class TimerControls extends Component {
       return (
         <div>
           <div style={styles.container}>
+            <Button icon='home' type='info' onClick={this.navHome} />
             <Button icon='bars' type='info' onClick={UiState.toggleControlsVisiblity} />
           </div>
           <div style={styles.controls}>
