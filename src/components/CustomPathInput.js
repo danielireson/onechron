@@ -56,6 +56,7 @@ class CustomPathInput extends Component {
           onChange={this._onChange} 
           type="text" 
           placeholder="..."
+          spellCheck="false"
           autoFocus />
       </div>
     )
