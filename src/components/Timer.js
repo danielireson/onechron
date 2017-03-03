@@ -37,14 +37,14 @@ class Timer extends Component {
     return TimerStore.timer.minutes + 'm ' + TimerStore.timer.seconds + 's - ' + APP_NAME
   }
 
-  getFontSize() {
+  getFontSizeProperty() {
     return UiState.fontSize.toString() + '%'
   }
 
   render() {
     const styles = {
       timer: {
-        fontSize: this.getFontSize()
+        fontSize: this.getFontSizeProperty()
       },
       h1: {
         display: 'inline-block',
