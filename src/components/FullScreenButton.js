@@ -5,7 +5,7 @@ import screenfull from 'screenfull'
 import { COLOURS, SIZE } from '../config/vars.js'
 
 class FullScreenButton extends Component {
-  handleButtonClick() {
+  onClick() {
     screenfull.toggle()
   }
 
@@ -33,7 +33,7 @@ class FullScreenButton extends Component {
     }
 
     return (
-      <button onClick={this.handleButtonClick} style={styles.button}>
+      <button onClick={this.onClick} style={styles.button}>
         <FontAwesome name='arrows-alt' />
       </button>
     )
