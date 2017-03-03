@@ -1,16 +1,20 @@
 import React, { Component } from 'react'
 import Radium from 'radium'
+import { observable } from 'mobx'
+import { observer } from 'mobx-react'
+
 import { COLOURS, SIZE } from '../config/vars.js'
 
+@observer
 class Clock extends Component {
+  @observable time = {
+    hours: 0,
+    minutes: 0
+  }
+
   constructor() {
     super()
     this.timer = null
-    this.state = {
-      hours: 0,
-      minutes: 0,
-      seconds: 0,
-    }
   }
 
   componentWillMount() {
@@ -24,11 +28,8 @@ class Clock extends Component {
 
   getTime() {
     let now = new Date()
-    this.setState({
-      hours: this.prependZeroCheck(now.getHours()),
-      minutes: this.prependZeroCheck(now.getMinutes()),
-      seconds: this.prependZeroCheck(now.getSeconds()),
-    })
+    this.time.hours = this.prependZeroCheck(now.getHours())
+    this.time.minutes = this.prependZeroCheck(now.getMinutes())
   }
 
   prependZeroCheck(number) {
@@ -55,7 +56,7 @@ class Clock extends Component {
 
     return (
       <div style={styles.clock}>
-        {this.state.hours}:{this.state.minutes}
+        {this.time.hours}:{this.time.minutes}
       </div>
     )
   }

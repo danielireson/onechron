@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Radium from 'radium'
+import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 
 import { BP, COLOURS, SIZE } from '../config/vars.js'
@@ -10,27 +11,16 @@ import Button from './Button'
 
 @observer
 class TimerControls extends Component {
+  @observable hasCustomTimeControls = false
+
   constructor() {
     super()
-    this.state = {
-      hasCustomTimeControls: false
-    }
     this.setCustomTime = this.setCustomTime.bind(this)
     this.toggleCustomTimeControls = this.toggleCustomTimeControls.bind(this)
   }
 
   toggleCustomTimeControls() {
-    let input = document.getElementById('custom-time-input')
-    if (this.state.hasCustomTimeControls) {
-      this.setState({
-        hasCustomTimeControls: false
-      })
-    } else {
-      this.setState({
-        hasCustomTimeControls: true
-      }, () => input.focus())      
-    }
-    input.value = ''
+    this.hasCustomTimeControls = !this.hasCustomTimeControls
   }
 
   setCustomTime() {
@@ -43,7 +33,7 @@ class TimerControls extends Component {
   }
 
   getCustomTimeControlsDisplay() {
-    if (this.state.hasCustomTimeControls) {
+    if (this.hasCustomTimeControls) {
       return 'block'
     } else {
       return 'none'
@@ -113,7 +103,7 @@ class TimerControls extends Component {
               <h6 style={styles.controlsHeader}>Set custom time (in minutes)</h6>
               <input id='custom-time-input' type='text' style={styles.input} placeholder='...' />
               <Button onClick={this.setCustomTime} type='success' text='Set' />
-              <Button onClick={UiState.toggleCustomTimeControls} type='danger' text='Cancel' />
+              <Button onClick={this.toggleCustomTimeControls} type='danger' text='Cancel' />
             </div>
             <div style={[styles.container, styles.hideOnMobile]}>
               <h6 style={styles.controlsHeader}>Timer font size</h6>

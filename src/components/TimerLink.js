@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Radium from 'radium'
+import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 import copy from 'copy-to-clipboard'
 
@@ -9,13 +10,12 @@ import UiState from '../stores/UiState'
 
 @observer
 class TimerLink extends Component {
+  @observable tooltip = this.tooltipDefault
+
   constructor() {
     super()
     this.baseUrl = window.location.protocol + '//' + window.location.host + '/'
     this.tooltipDefault = 'Click to copy to clipboard'
-    this.state = {
-      tooltip: this.tooltipDefault,
-    }
     this.onClick = this.onClick.bind(this)
     this.onMouseEnter = this.onMouseEnter.bind(this)
     this.onMouseLeave = this.onMouseLeave.bind(this)
@@ -24,15 +24,10 @@ class TimerLink extends Component {
   onClick() {
     let hasCopied = copy(this.baseUrl + TimerStore.path)
     if (hasCopied) {
-      this.setState({
-        tooltip: 'Copied!'
-      }, () => {
-        window.setTimeout(() => {
-          this.setState({
-            tooltip: this.tooltipDefault
-          })
-        }, 500);
-      })
+      this.tooltip = 'Copied!'
+      setTimeout(() => {
+        this.tooltip = this.tooltipDefault
+      }, 500);
     }
   }
 
@@ -83,7 +78,7 @@ class TimerLink extends Component {
     if (UiState.hasLink) {
       return (
         <h1 onClick={this.onClick} onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave} style={styles.url}>
-          <span style={styles.tooltip}>{this.state.tooltip}</span>
+          <span style={styles.tooltip}>{this.tooltip}</span>
           {this.baseUrl + TimerStore.path}
         </h1>
       )
