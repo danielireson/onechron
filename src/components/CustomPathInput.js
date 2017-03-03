@@ -54,9 +54,9 @@ class CustomPathInput extends Component {
           style={styles.input} 
           value={TimerStore.path} 
           onChange={this._onChange} 
-          type="text" 
-          placeholder="..."
-          spellCheck="false"
+          type='text'
+          placeholder='...'
+          spellCheck='false'
           autoFocus />
       </div>
     )

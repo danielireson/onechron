@@ -17,7 +17,7 @@ class Footer extends Component {
 
     return (
       <footer style={styles.footer}>
-        <a style={styles.a} href="http://digitalbydan.com">digitalbydan.com</a>
+        <a style={styles.a} href='http://digitalbydan.com'>digitalbydan.com</a>
       </footer>
     )
   }
