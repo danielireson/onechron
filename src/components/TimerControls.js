@@ -32,11 +32,19 @@ class TimerControls extends Component {
     }
   }
 
-  getCustomTimeControlsDisplay() {
-    if (this.hasCustomTimeControls) {
-      return 'block'
+  getControlsHeightProperty() {
+    if (UiState.hasControls) {
+      return '100vh'
     } else {
-      return 'none'
+      return 0
+    }
+  }
+
+  getCustomTimeHeightProperty() {
+    if (this.hasCustomTimeControls) {
+      return '100vh'
+    } else {
+      return 0
     }
   }
 
@@ -44,6 +52,11 @@ class TimerControls extends Component {
     const styles = {
       container: {
         marginBottom: SIZE.px(4),
+      },
+      controls: {
+        maxHeight: this.getControlsHeightProperty(),
+        overflow: 'hidden',
+        transition: 'max-height 1s ease',
       },
       controlsHeader: {
         fontSize: SIZE.em(1),
@@ -58,7 +71,9 @@ class TimerControls extends Component {
         }
       },
       customTimeControls: {
-        display: this.getCustomTimeControlsDisplay()
+        maxHeight: this.getCustomTimeHeightProperty(),
+        overflow: 'hidden',
+        transition: 'max-height 1s ease',
       },
       input: {
         border: 'none',
@@ -80,13 +95,13 @@ class TimerControls extends Component {
     }
 
     if (!UiState.loading) {
-      if (UiState.hasControls) {
-        return (
-          <div>
-            <div style={styles.container}>
-              <Button icon='bars' type='info' onClick={UiState.toggleControlsVisiblity} />
-            </div>
-            <div style={styles.container}>
+      return (
+        <div>
+          <div style={styles.container}>
+            <Button icon='bars' type='info' onClick={UiState.toggleControlsVisiblity} />
+          </div>
+          <div style={styles.controls}>
+            <div style={[styles.container]}>
               <h6 style={styles.controlsHeader}>Timer controls</h6>
               <span style={styles.hideOnMobile}>
                 <Button icon='eye' onClick={UiState.toggleLinkVisibility} />
@@ -110,14 +125,8 @@ class TimerControls extends Component {
               <input type='range' min='100' max='200' value={UiState.fontSize} onChange={UiState.setFontSize} />
             </div>
           </div>
-        )
-      } else {
-        return (
-          <div style={styles.container}>
-            <Button icon='bars' type='info' onClick={(UiState.toggleControlsVisiblity)} noMarginRight />
-          </div>
-        )
-      }
+        </div>
+      )
     }
 
     return null
