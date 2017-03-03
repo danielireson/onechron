@@ -6,19 +6,11 @@ class UiState {
   @observable hasLink = true
 
   @action toggleControlsVisiblity = () => {
-    if (this.hasControls) {
-      this.hasControls = false
-    } else {
-      this.hasControls = true
-    }
+    this.hasControls = !this.hasControls
   }
 
   @action toggleLinkVisibility = () => {
-    if (this.hasLink) {
-      this.hasLink = false
-    } else {
-      this.hasLink = true
-    }
+    this.hasLink = !this.hasLink
   }
 
   @action setFontSize = (event) => {
