@@ -12,7 +12,7 @@ class CustomPathInput extends Component {
     TimerStore.setPath(input)
   }
 
-  getStatusBackground() {
+  getStatusBackgroundProperty() {
     if (TimerStore.isClearPath) {
       return COLOURS.GREEN
     }
@@ -26,7 +26,7 @@ class CustomPathInput extends Component {
         width: '100%',
       },
       status: {
-        background: this.getStatusBackground(),
+        background: this.getStatusBackgroundProperty(),
         borderRadius: SIZE.px(3),
         height: SIZE.px(6),
         position: 'absolute',
