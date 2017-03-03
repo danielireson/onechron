@@ -1,11 +1,16 @@
 import React, { Component } from 'react'
 import Radium from 'radium'
+import { observer } from 'mobx-react'
 import copy from 'copy-to-clipboard'
-import { COLOURS, SIZE, BP } from '../config/vars'
 
+import { COLOURS, SIZE, BP } from '../config/vars'
+import TimerStore from '../stores/TimerStore'
+import UiState from '../stores/UiState'
+
+@observer
 class TimerLink extends Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
     this.baseUrl = window.location.protocol + '//' + window.location.host + '/'
     this.tooltipDefault = 'Click to copy to clipboard'
     this.state = {
@@ -17,7 +22,7 @@ class TimerLink extends Component {
   }
 
   _onClick() {
-    let hasCopied = copy(this.baseUrl + this.props.path)
+    let hasCopied = copy(this.baseUrl + TimerStore.path)
     if (hasCopied) {
       this.setState({
         tooltip: 'Copied!'
@@ -75,22 +80,17 @@ class TimerLink extends Component {
       },
     }
 
-    if (this.props.hasLink) {
+    if (UiState.hasLink) {
       return (
         <h1 onClick={this._onClick} onMouseEnter={this._onMouseEnter} onMouseLeave={this._onMouseLeave} style={styles.url}>
           <span style={styles.tooltip}>{this.state.tooltip}</span>
-          {this.baseUrl + this.props.path}
+          {this.baseUrl + TimerStore.path}
         </h1>
       )
     }
 
     return null
   }
-}
-
-TimerLink.propTypes = {
-  path: React.PropTypes.string.isRequired,
-  hasLink: React.PropTypes.bool.isRequired,
 }
 
 export default Radium(TimerLink)

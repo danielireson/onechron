@@ -1,10 +1,19 @@
 import React, { Component } from 'react'
 import Radium from 'radium'
-import { COLOURS, SIZE } from '../config/vars.js'
+import { observer } from 'mobx-react'
 
+import { COLOURS, SIZE } from '../config/vars.js'
+import TimerStore from '../stores/TimerStore'
+
+@observer
 class CustomPathInput extends Component {
+  _onChange(event) {
+    let input = event.target.value.replace(' ', '').toLowerCase()
+    TimerStore.setPath(input)
+  }
+
   _getStatusBackground() {
-    if (this.props.isClearPath) {
+    if (TimerStore.isClearPath) {
       return COLOURS.GREEN
     }
     return COLOURS.RED
@@ -43,20 +52,14 @@ class CustomPathInput extends Component {
         <div style={styles.status}></div>
         <input
           style={styles.input} 
-          value={this.props.path} 
-          onChange={this.props.handleInputChange} 
+          value={TimerStore.path} 
+          onChange={this._onChange} 
           type="text" 
           placeholder="..."
           autoFocus />
       </div>
     )
   }
-}
-
-CustomPathInput.propTypes = {
-  path: React.PropTypes.string.isRequired,
-  isClearPath: React.PropTypes.bool.isRequired,
-  handleInputChange: React.PropTypes.func.isRequired,
 }
 
 export default Radium(CustomPathInput)

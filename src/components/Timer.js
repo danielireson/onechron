@@ -1,53 +1,44 @@
 import React, { Component } from 'react'
-import FontAwesome from 'react-fontawesome'
 import Radium from 'radium'
+import { observer } from 'mobx-react'
+import FontAwesome from 'react-fontawesome'
+
 import { APP_NAME, COLOURS, SIZE, BP } from '../config/vars.js'
+import TimerStore from '../stores/TimerStore'
+import UiState from '../stores/UiState'
 
+@observer
 class Timer extends Component {
-  constructor() {
-    super()
-    this.timer = null
-    this.state = {
-      minutes: 0,
-      seconds: 0,
-    }
-  }
-
   componentWillMount() {
+    TimerStore.subscribeToTimerUpdates()
     this._calculateTime()
-    this.timer = window.setInterval(() => this._calculateTime(), 1000)
+    TimerStore.timer.timerRef = window.setInterval(() => this._calculateTime(), 1000)
   }
 
   componentWillUnmount() {
-    window.clearInterval(this.timer)
+    window.clearInterval(TimerStore.timer.timerRef)
   }
 
   _calculateTime() {
-    let totalSeconds = (new Date(this.props.endTime) - new Date()) / 1000
+    let totalSeconds = (new Date(TimerStore.timer.endTime) - new Date()) / 1000
     let minutes = Math.floor(totalSeconds / 60)
     let seconds = Math.floor(totalSeconds - (minutes * 60))
     if (minutes >= 0) {
-      this._setStateTime(minutes, seconds)
+      TimerStore.timer.minutes = minutes
+      TimerStore.timer.seconds = seconds    
     } else {
-      this._setStateTime(0, 0)
+      TimerStore.timer.minutes = 0
+      TimerStore.timer.seconds = 0
     }
-  }
-
-  _setStateTime(minutes, seconds) {
-    this.setState({
-      minutes: minutes,
-      seconds: seconds,      
-    }, () => {
-      document.title = this._generatePageTitle()
-    })
+    document.title = this._generatePageTitle()
   }
 
   _generatePageTitle() {
-    return this.state.minutes + 'm ' + this.state.seconds + 's - ' + APP_NAME
+    return TimerStore.timer.minutes + 'm ' + TimerStore.timer.seconds + 's - ' + APP_NAME
   }
 
   _getFontSize() {
-    return this.props.fontSize.toString() + '%'
+    return UiState.fontSize.toString() + '%'
   }
 
   render() {
@@ -80,23 +71,17 @@ class Timer extends Component {
       },
     }
 
-    if (this.props.isLoaded) {
+    if (!TimerStore.loading) {
       return (
         <div style={styles.timer}>
-          <h1 style={styles.h1}>{this.state.minutes}<small style={styles.small}>M</small></h1>
-          <h1 style={[styles.h1, styles.noMarginRight]}>{this.state.seconds}<small style={styles.small}>S</small></h1>
+          <h1 style={styles.h1}>{TimerStore.timer.minutes}<small style={styles.small}>M</small></h1>
+          <h1 style={[styles.h1, styles.noMarginRight]}>{TimerStore.timer.seconds}<small style={styles.small}>S</small></h1>
         </div>
       )
     }
 
     return <FontAwesome style={styles.spinner} name='spinner' size='4x' spin />
   }
-}
-
-Timer.propTypes = {
-  endTime: React.PropTypes.number.isRequired,
-  isLoaded: React.PropTypes.bool.isRequired,
-  fontSize: React.PropTypes.number.isRequired,
 }
 
 export default Radium(Timer)

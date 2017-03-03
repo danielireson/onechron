@@ -1,8 +1,14 @@
 import React, { Component } from 'react'
 import Radium from 'radium'
+import { observer } from 'mobx-react'
+
 import { BP, COLOURS, SIZE } from '../config/vars.js'
+import TimerStore from '../stores/TimerStore'
+import UiState from '../stores/UiState'
+
 import Button from './Button'
 
+@observer
 class TimerControls extends Component {
   constructor() {
     super()
@@ -31,7 +37,7 @@ class TimerControls extends Component {
     let input = document.getElementById('custom-time-input')
     let time = Number(input.value)
     if (Number.isInteger(time)) {
-      this.props.setTime(time)
+      TimerStore.setTime(time)
       this._toggleCustomTimeControls()
     }
   }
@@ -83,42 +89,42 @@ class TimerControls extends Component {
       }
     }
 
-    if (this.props.isLoaded) {
-      if (this.props.hasControls) {
+    if (!TimerStore.loading) {
+      if (UiState.hasControls) {
         return (
           <div>
             <div style={styles.container}>
-              <Button icon='bars' type='info' onClick={this.props.toggleControlsVisiblity} />
+              <Button icon='bars' type='info' onClick={UiState.toggleControlsVisiblity} />
             </div>
             <div style={styles.container}>
               <h6 style={styles.controlsHeader}>Timer controls</h6>
               <span style={styles.hideOnMobile}>
-                <Button icon='eye' onClick={this.props.toggleLinkVisibility} />
+                <Button icon='eye' onClick={UiState.toggleLinkVisibility} />
               </span>
-              <Button icon='clock-o' text='1m' onClick={() => this.props.setTime(1)} />
-              <Button icon='clock-o' text='5m' onClick={() => this.props.setTime(5)} />
-              <Button icon='clock-o' text='10m'  onClick={() => this.props.setTime(10)} />
-              <Button icon='clock-o' text='15m'  onClick={() => this.props.setTime(15)} />
-              <Button icon='clock-o' text='20m'  onClick={() => this.props.setTime(20)} />
+              <Button icon='clock-o' text='1m' onClick={() => TimerStore.setTime(1)} />
+              <Button icon='clock-o' text='5m' onClick={() => TimerStore.setTime(5)} />
+              <Button icon='clock-o' text='10m'  onClick={() => TimerStore.setTime(10)} />
+              <Button icon='clock-o' text='15m'  onClick={() => TimerStore.setTime(15)} />
+              <Button icon='clock-o' text='20m'  onClick={() => TimerStore.setTime(20)} />
               <Button icon='clock-o' text='Custom' onClick={this._toggleCustomTimeControls} />
-              <Button icon='stop' onClick={() => this.props.setTime(0)} noMarginRight />
+              <Button icon='stop' onClick={() => TimerStore.setTime(0)} noMarginRight />
             </div>
             <div style={[styles.customTimeControls, styles.container]}>
               <h6 style={styles.controlsHeader}>Set custom time (in minutes)</h6>
               <input id='custom-time-input' type='text' style={styles.input} placeholder='...' />
               <Button onClick={this._setCustomTime} type='success' text='Set' />
-              <Button onClick={this._toggleCustomTimeControls} type='danger' text='Cancel' />
+              <Button onClick={UiState.toggleCustomTimeControls} type='danger' text='Cancel' />
             </div>
             <div style={[styles.container, styles.hideOnMobile]}>
               <h6 style={styles.controlsHeader}>Timer font size</h6>
-              <input type='range' min='100' max='200' value={this.props.fontSize} onChange={this.props.handleFontSizeChange} />
+              <input type='range' min='100' max='200' value={UiState.fontSize} onChange={UiState.setFontSize} />
             </div>
           </div>
         )
       } else {
         return (
           <div style={styles.container}>
-            <Button icon='bars' type='info' onClick={this.props.toggleControlsVisiblity} noMarginRight />
+            <Button icon='bars' type='info' onClick={(UiState.toggleControlsVisiblity)} noMarginRight />
           </div>
         )
       }
@@ -126,14 +132,6 @@ class TimerControls extends Component {
 
     return null
   }
-}
-
-TimerControls.PropTypes = {
-  isLoaded: React.PropTypes.bool.isRequired,
-  hasControls: React.PropTypes.bool.isRequired,
-  setTime: React.PropTypes.func.isRequired,
-  toggleControlsVisiblity: React.PropTypes.func.isRequired,
-  toggleLinkVisibility: React.PropTypes.func.isRequired,
 }
 
 export default Radium(TimerControls)

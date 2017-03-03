@@ -6,3 +6,8 @@ const config = {
 }
 
 firebase.initializeApp(config)
+
+export default {
+  db: firebase.database().ref(),
+  timestamp: firebase.database.ServerValue.TIMESTAMP
+}

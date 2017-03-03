@@ -1,4 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { browserHistory } from 'react-router'
+
+import { APP_NAME } from '../config/vars.js'
+import TimerStore from '../stores/TimerStore'
+
 import Clock from '../components/Clock'
 import Footer from '../components/Footer'
 import FullScreenButton from '../components/FullScreenButton'
@@ -6,40 +11,38 @@ import Timer from '../components/Timer'
 import TimerLink from '../components/TimerLink'
 import TimerControls from '../components/TimerControls'
 
-const Live = (props) => {
-  return (
-    <div>
-      <Clock />
-      <FullScreenButton />
-      <TimerLink hasLink={props.hasLink} path={props.path} />
-      <Timer 
-        isLoaded={props.isLoaded} 
-        endTime={props.endTime} 
-        fontSize={props.fontSize} />
-      <TimerControls 
-        isLoaded={props.isLoaded} 
-        hasControls={props.hasControls} 
-        setTime={props.setTime} 
-        fontSize={props.fontSize}
-        handleFontSizeChange={props.handleFontSizeChange} 
-        toggleControlsVisiblity={props.toggleControlsVisiblity} 
-        toggleLinkVisibility={props.toggleLinkVisibility} />
-      <Footer />
-    </div>
-  )
-}
+class Live extends Component {
+  constructor() {
+    super()
+    document.title = APP_NAME
+  }
 
-Live.PropTypes = {
-  path: React.PropTypes.string.isRequired,
-  isLoaded: React.PropTypes.bool.isRequired,
-  hasControls: React.PropTypes.bool.isRequired,
-  hasLink: React.PropTypes.bool.isRequired,
-  endTime: React.PropTypes.number.isRequired,
-  fontSize: React.PropTypes.number.isRequired,
-  toggleControlsVisiblity: React.PropTypes.func.isRequired,
-  toggleLinkVisibility: React.PropTypes.func.isRequired,
-  handleFontSizeChange: React.PropTypes.func.isRequired,
-  setTime: React.PropTypes.func.isRequired,
+  componentWillMount() {
+    this.checkTimerExists()
+  }
+
+  checkTimerExists() {
+    TimerStore.setPath(this.props.params.path)
+    TimerStore.checkForClearPath().then((isClearPath) => {
+      if (isClearPath) {
+        // No timer at this URL therefore redirect home
+        browserHistory.push('/')
+      }
+    })    
+  }
+
+  render() {
+    return (
+      <div>
+        <Clock />
+        <FullScreenButton />
+        <TimerLink />
+        <Timer />
+        <TimerControls />
+        <Footer />
+      </div>
+    )
+  }  
 }
 
 export default Live

@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import { Router, Route, browserHistory } from 'react-router'
 import { StyleRoot, Style } from 'radium'
 import DevTools from 'mobx-react-devtools'
+
 import { COLOURS, SIZE } from './config/vars.js'
-import HomeContainer from './pages/HomeContainer'
-import LiveContainer from './pages/LiveContainer'
+
+import Home from './pages/Home'
+import Live from './pages/Live'
 
 class App extends Component {
   render() {
@@ -32,8 +34,8 @@ class App extends Component {
       <StyleRoot>
         <Style rules={styles} />
         <Router history={browserHistory}>
-          <Route path='/' component={HomeContainer} />
-          <Route path='/:path' component={LiveContainer} />
+          <Route path='/' component={Home} />
+          <Route path='/:path' component={Live} />
         </Router>
         <DevTools />
       </StyleRoot>
