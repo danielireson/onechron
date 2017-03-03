@@ -10,10 +10,7 @@ class FullScreenButton extends Component {
   }
 
   getButtonDisplayProperty() {
-    if (screenfull.enabled) {
-      return 'block'
-    }
-    return 'none'
+    return screenfull.enabled ? 'block' : 'none'
   }
 
   render() {

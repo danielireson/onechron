@@ -41,19 +41,11 @@ class TimerLink extends Component {
   }
 
   getUrlOpacityProperty() {
-    if (UiState.hasLink) {
-      return 1
-    } else {
-      return 0
-    }    
+    return UiState.hasLink ? 1 : 0   
   }
 
   getTooltipOpacityProperty() {
-    if (this.hasTooltip) {
-      return 1
-    } else {
-      return 0
-    }
+    return this.hasTooltip ? 1 : 0
   }
 
   render() {

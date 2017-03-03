@@ -34,19 +34,11 @@ class TimerControls extends Component {
   }
 
   getControlsHeightProperty() {
-    if (UiState.hasControls) {
-      return '100vh'
-    } else {
-      return 0
-    }
+    return UiState.hasControls ? '100vh' : 0
   }
 
   getCustomTimeHeightProperty() {
-    if (this.hasCustomTimeControls) {
-      return '100vh'
-    } else {
-      return 0
-    }
+    return this.hasCustomTimeControls ? '100vh' : 0
   }
 
   navHome() {

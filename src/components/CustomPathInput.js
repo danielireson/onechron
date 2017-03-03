@@ -13,10 +13,7 @@ class CustomPathInput extends Component {
   }
 
   getStatusBackgroundProperty() {
-    if (TimerStore.isClearPath) {
-      return COLOURS.GREEN
-    }
-    return COLOURS.RED
+    return TimerStore.isClearPath ? COLOURS.GREEN : COLOURS.RED
   }
 
   render() {
