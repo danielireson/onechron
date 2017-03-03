@@ -19,7 +19,7 @@ class TimerStore {
     this.clearOldFirebaseTimers()
   }
 
-  setPath(path) {
+  @action setPath(path) {
     this.path = path
   }
 
