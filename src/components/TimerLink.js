@@ -11,6 +11,7 @@ import UiState from '../stores/UiState'
 @observer
 class TimerLink extends Component {
   @observable tooltip = this.tooltipDefault
+  @observable hasTooltip = false
 
   constructor() {
     super()
@@ -31,15 +32,19 @@ class TimerLink extends Component {
     }
   }
 
-  onMouseEnter(event) {
-    if (event.target.tagName === 'H1') {
-      event.target.children[0].style.display = 'block'
-    }
+  onMouseEnter() {
+    this.hasTooltip = true
   }
 
-  onMouseLeave(event) {
-    if (event.target.tagName === 'H1') {
-      event.target.children[0].style.display = 'none'
+  onMouseLeave() {
+    this.hasTooltip = false
+  }
+
+  getTooltipDisplayProperty() {
+    if (this.hasTooltip) {
+      return 'block'
+    } else {
+      return 'none'
     }
   }
 
@@ -63,7 +68,7 @@ class TimerLink extends Component {
         background: COLOURS.DARK_BLUE,
         borderRadius: SIZE.px(1),
         color: COLOURS.WHITE,
-        display: 'none',
+        display: this.getTooltipDisplayProperty(),
         fontSize: '50%',
         paddingTop: SIZE.px(2),
         paddingBottom: SIZE.px(2),
