@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Router, Route, browserHistory } from 'react-router'
 import { StyleRoot, Style } from 'radium'
-import DevTools from 'mobx-react-devtools'
 
 import { COLOURS, SIZE } from './config/vars.js'
 
@@ -37,7 +36,6 @@ class App extends Component {
           <Route path='/' component={Home} />
           <Route path='/:path' component={Live} />
         </Router>
-        <DevTools />
       </StyleRoot>
     )
   }
