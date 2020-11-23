@@ -89,7 +89,9 @@ class Timer extends Component {
     if (!UiState.loading) {
       if(TimerStore. timer.hours > 0){
         return (
-          <h1 style={styles.msg}>{TimerStore.timer.message}</h1>
+          <div>
+            <h1 style={styles.msg}>{TimerStore.timer.message}</h1>
+          </div>
           <div style={styles.timer}>
             <h1 style={styles.h1}>{TimerStore.timer.hours}<small style={styles.small}>H</small></h1>
             <h1 style={styles.h1}>{TimerStore.timer.minutes}<small style={styles.small}>M</small></h1>
