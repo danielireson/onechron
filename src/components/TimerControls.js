@@ -63,7 +63,7 @@ class TimerControls extends Component {
       },
       hideOnMobile: {
         display: 'none',
-        [BP.MEDIUM]: { 
+        [BP.MEDIUM]: {
           display: 'inline-block'
         }
       },
@@ -111,6 +111,12 @@ class TimerControls extends Component {
               <Button icon='clock-o' text='20m'  onClick={() => TimerStore.setTime(20)} />
               <Button icon='clock-o' text='Custom' onClick={this.toggleCustomTimeControls} />
               <Button icon='stop' onClick={() => TimerStore.setTime(0)} noMarginRight />
+            </div>
+            <div style={[styles.customTimeControls, styles.container]}>
+              <h6 style={styles.controlsHeader}>Set custom time (in minutes)</h6>
+              <input id='custom-time-input' type='text' style={styles.input} placeholder='...' />
+              <Button onClick={this.setCustomTime} type='success' text='Set' />
+              <Button onClick={this.toggleCustomTimeControls} type='danger' text='Cancel' />
             </div>
             <div style={[styles.customTimeControls, styles.container]}>
               <h6 style={styles.controlsHeader}>Set custom time (in minutes)</h6>
