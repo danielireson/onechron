@@ -10,7 +10,7 @@ import Timer from '../components/Timer'
 import TimerLink from '../components/TimerLink'
 import TimerControls from '../components/TimerControls'
 
-class Live extends Component {
+class View extends Component {
   constructor() {
     super()
     TimerStore.resetTimer()
@@ -33,15 +33,10 @@ class Live extends Component {
   render() {
     return (
       <div>
-        <Clock />
-        <FullScreenButton />
-        <TimerLink />
         <Timer />
-        <TimerControls />
-        <Footer />
       </div>
     )
   }  
 }
 
-export default Live
+export default View
