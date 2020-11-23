@@ -106,7 +106,7 @@ class TimerStore {
   setMessage = (msg) =>{
     firebase.db.child(this.path).update({
       message: msg
-    }
+    })
   }
 }
 
