@@ -77,6 +77,7 @@ class TimerStore {
       let data = snapshot.val()
       this.timer.createdAt = data.createdAt
       this.timer.endTime = data.endTime
+      this.message = data.message
     })
     UiState.loading = false
   }
