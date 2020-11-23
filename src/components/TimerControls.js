@@ -29,8 +29,11 @@ class TimerControls extends Component {
     let time = Number(input.value)
     if (Number.isInteger(time)) {
       TimerStore.setTime(time)
-      this.toggleCustomTimeControls()
     }
+  }
+  setCustomText() {
+    let input = document.getElementById('custom-text-input')
+    TimerStore.setMessage(input.value)
   }
 
   getControlsHeightProperty() {
@@ -63,7 +66,7 @@ class TimerControls extends Component {
       },
       hideOnMobile: {
         display: 'none',
-        [BP.MEDIUM]: { 
+        [BP.MEDIUM]: {
           display: 'inline-block'
         }
       },
@@ -105,10 +108,11 @@ class TimerControls extends Component {
                 <Button icon='eye' onClick={UiState.toggleLinkVisibility} />
               </span>
               <Button icon='clock-o' text='1m' onClick={() => TimerStore.setTime(1)} />
-              <Button icon='clock-o' text='5m' onClick={() => TimerStore.setTime(5)} />
-              <Button icon='clock-o' text='10m'  onClick={() => TimerStore.setTime(10)} />
-              <Button icon='clock-o' text='15m'  onClick={() => TimerStore.setTime(15)} />
-              <Button icon='clock-o' text='20m'  onClick={() => TimerStore.setTime(20)} />
+              <Button icon='clock-o' text='10m' onClick={() => TimerStore.setTime(10)} />
+              <Button icon='clock-o' text='12m' onClick={() => TimerStore.setTime(12)} />
+              <Button icon='clock-o' text='30m'  onClick={() => TimerStore.setTime(30)} />
+              <Button icon='clock-o' text='45m'  onClick={() => TimerStore.setTime(45)} />
+              <Button icon='clock-o' text='1h'  onClick={() => TimerStore.setTime(60)} />
               <Button icon='clock-o' text='Custom' onClick={this.toggleCustomTimeControls} />
               <Button icon='stop' onClick={() => TimerStore.setTime(0)} noMarginRight />
             </div>
@@ -116,6 +120,12 @@ class TimerControls extends Component {
               <h6 style={styles.controlsHeader}>Set custom time (in minutes)</h6>
               <input id='custom-time-input' type='text' style={styles.input} placeholder='...' />
               <Button onClick={this.setCustomTime} type='success' text='Set' />
+              <Button onClick={this.toggleCustomTimeControls} type='danger' text='Cancel' />
+            </div>
+            <div style={[styles.customTimeControls, styles.container]}>
+              <h6 style={styles.controlsHeader}>Set custom Message to broadcast</h6>
+              <input id='custom-text-input' type='text' style={styles.input} placeholder="" />
+              <Button onClick={this.setCustomText} type='success' text='Set' />
               <Button onClick={this.toggleCustomTimeControls} type='danger' text='Cancel' />
             </div>
             <div style={[styles.container, styles.hideOnMobile]}>

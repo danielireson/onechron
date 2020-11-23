@@ -6,6 +6,7 @@ import { COLOURS, SIZE } from './config/vars.js'
 
 import Home from './pages/Home'
 import Live from './pages/Live'
+import View from './pages/View'
 
 class App extends Component {
   render() {
@@ -34,7 +35,8 @@ class App extends Component {
         <Style rules={styles} />
         <Router history={browserHistory}>
           <Route path='/' component={Home} />
-          <Route path='/:path' component={Live} />
+          <Route path='/:path' component={View} />
+          <Route path='/admin/:path' component={Live} />
         </Router>
       </StyleRoot>
     )

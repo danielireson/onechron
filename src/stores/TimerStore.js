@@ -6,10 +6,12 @@ import UiState from './UiState'
 class TimerStore {
   @observable path = ''
   @observable isClearPath = false
+  @observable message = ''
   @observable timer = {
     timerRef: null,
     createdAt: null,
     endTime: null,
+    hours: 0,
     minutes: 0,
     seconds: 0
   }
@@ -24,8 +26,9 @@ class TimerStore {
       timerRef: null,
       createdAt: null,
       endTime: null,
+      hours: 0,
       minutes: 0,
-      seconds: 0      
+      seconds: 0
     }
   }
 
@@ -66,6 +69,7 @@ class TimerStore {
       return firebase.db.child(this.path).set({
         createdAt: firebase.timestamp,
         endTime: firebase.timestamp,
+        message: "Countdown",
       })
     }
   }
@@ -75,6 +79,7 @@ class TimerStore {
       let data = snapshot.val()
       this.timer.createdAt = data.createdAt
       this.timer.endTime = data.endTime
+      this.message = data.message
     })
     UiState.loading = false
   }
@@ -95,6 +100,12 @@ class TimerStore {
     let endTime = new Date().getTime() + minutes * 60 * 1000 + 1000
     firebase.db.child(this.path).update({
       endTime: endTime
+    })
+  }
+
+  setMessage = (msg) =>{
+    firebase.db.child(this.path).update({
+      message: msg
     })
   }
 }
