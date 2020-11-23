@@ -32,6 +32,11 @@ class TimerControls extends Component {
       this.toggleCustomTimeControls()
     }
   }
+  setCustomText() {
+    let input = document.getElementById('custom-text-input')
+    TimerStore.setMessage(input.value)
+    this.toggleCustomTimeControls()
+  }
 
   getControlsHeightProperty() {
     return UiState.hasControls ? '100vh' : 0
@@ -119,9 +124,9 @@ class TimerControls extends Component {
               <Button onClick={this.toggleCustomTimeControls} type='danger' text='Cancel' />
             </div>
             <div style={[styles.customTimeControls, styles.container]}>
-              <h6 style={styles.controlsHeader}>Set custom time (in minutes)</h6>
-              <input id='custom-time-input' type='text' style={styles.input} placeholder='...' />
-              <Button onClick={this.setCustomTime} type='success' text='Set' />
+              <h6 style={styles.controlsHeader}>Set custom Message to broadcast</h6>
+              <input id='custom-text-input' type='text' style={styles.input} placeholder='Message' />
+              <Button onClick={this.setCustomText} type='success' text='Set' />
               <Button onClick={this.toggleCustomTimeControls} type='danger' text='Cancel' />
             </div>
             <div style={[styles.container, styles.hideOnMobile]}>
