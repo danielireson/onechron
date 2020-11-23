@@ -24,7 +24,7 @@ class Timer extends Component {
     let hours = Math.floor(totalSeconds / 3600)
     let minutes = Math.floor((totalSeconds / 60) - (hours * 60))
     let seconds = Math.floor(totalSeconds - (minutes * 60) - (hours * 3600))
-    if (minutes >= 0) {
+    if (hours >= 0) {
       TimerStore.timer.hours = hours
       TimerStore.timer.minutes = minutes
       TimerStore.timer.seconds = seconds
