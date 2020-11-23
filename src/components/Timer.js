@@ -60,7 +60,7 @@ class Timer extends Component {
         marginBottom: SIZE.px(4),
         opacity: 0,
         position: 'relative',
-      }
+      },
       h1: {
         display: 'inline-block',
         fontSize: SIZE.em(5),
