@@ -111,6 +111,7 @@ class TimerControls extends Component {
               </span>
               <Button icon='clock-o' text='1m' onClick={() => TimerStore.setTime(1)} />
               <Button icon='clock-o' text='10m' onClick={() => TimerStore.setTime(10)} />
+              <Button icon='clock-o' text='12m' onClick={() => TimerStore.setTime(12)} />
               <Button icon='clock-o' text='30m'  onClick={() => TimerStore.setTime(30)} />
               <Button icon='clock-o' text='45m'  onClick={() => TimerStore.setTime(45)} />
               <Button icon='clock-o' text='1h'  onClick={() => TimerStore.setTime(60)} />
