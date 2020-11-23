@@ -55,10 +55,9 @@ class Timer extends Component {
       },
       msg:{
         display: 'inline-block',
-        fontSize: SIZE.em(2),
+        fontSize: SIZE.em(4),
         fontWeight: '300',
         marginBottom: SIZE.px(4),
-        opacity: 0,
         position: 'relative',
       },
       h1: {
