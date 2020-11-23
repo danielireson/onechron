@@ -53,6 +53,14 @@ class Timer extends Component {
       timer: {
         fontSize: this.getFontSizeProperty()
       },
+      msg:{
+        display: 'none',
+        fontSize: SIZE.em(2),
+        fontWeight: '300',
+        marginBottom: SIZE.px(4),
+        opacity: 0,
+        position: 'relative',
+      }
       h1: {
         display: 'inline-block',
         fontSize: SIZE.em(5),
@@ -81,6 +89,7 @@ class Timer extends Component {
     if (!UiState.loading) {
       if(TimerStore. timer.hours > 0){
         return (
+          <h1 style={styles.msg}>{TimerStore.timer.message}</h1>
           <div style={styles.timer}>
             <h1 style={styles.h1}>{TimerStore.timer.hours}<small style={styles.small}>H</small></h1>
             <h1 style={styles.h1}>{TimerStore.timer.minutes}<small style={styles.small}>M</small></h1>
