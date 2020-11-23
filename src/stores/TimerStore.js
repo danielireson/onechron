@@ -11,6 +11,7 @@ class TimerStore {
     timerRef: null,
     createdAt: null,
     endTime: null,
+    hours: 0,
     minutes: 0,
     seconds: 0
   }
@@ -25,8 +26,9 @@ class TimerStore {
       timerRef: null,
       createdAt: null,
       endTime: null,
+      hours: 0,
       minutes: 0,
-      seconds: 0      
+      seconds: 0
     }
   }
 
@@ -100,7 +102,7 @@ class TimerStore {
       endTime: endTime
     })
   }
-  
+
   setMessage = (msg) =>{
     firebase.db.child(this.path).update({
       message: msg

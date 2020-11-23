@@ -21,13 +21,15 @@ class Timer extends Component {
 
   calculateTime() {
     let totalSeconds = (new Date(TimerStore.timer.endTime) - new Date()) / 1000
-    let hours = math.floor(totalSeconds / 3600)
+    let hours = Math.floor(totalSeconds / 3600)
     let minutes = Math.floor((totalSeconds / 60) - (hours * 60))
     let seconds = Math.floor(totalSeconds - (minutes * 60) - (hours * 3600))
     if (minutes >= 0) {
+      TimerStore.timer.hours = hours
       TimerStore.timer.minutes = minutes
-      TimerStore.timer.seconds = seconds    
+      TimerStore.timer.seconds = seconds
     } else {
+      TimerStore.timer.hours = 0
       TimerStore.timer.minutes = 0
       TimerStore.timer.seconds = 0
     }
@@ -35,7 +37,11 @@ class Timer extends Component {
   }
 
   generatePageTitle() {
-    return TimerStore.timer.minutes + 'm ' + TimerStore.timer.seconds + 's - ' + APP_NAME
+    if(TimerStore.timer.hours>0){
+      return TimerStore.timer.hours + 'h ' + TimerStore.timer.minutes + 'm ' + TimerStore.timer.seconds + 's - ' + APP_NAME
+    }else{
+      return TimerStore.timer.minutes + 'm ' + TimerStore.timer.seconds + 's - ' + APP_NAME
+    }
   }
 
   getFontSizeProperty() {
@@ -61,7 +67,7 @@ class Timer extends Component {
         },
       },
       noMarginRight: {
-        marginRight: 0, 
+        marginRight: 0,
       },
       small: {
         color: COLOURS.DARK_BLUE,
@@ -73,12 +79,22 @@ class Timer extends Component {
     }
 
     if (!UiState.loading) {
-      return (
-        <div style={styles.timer}>
-          <h1 style={styles.h1}>{TimerStore.timer.minutes}<small style={styles.small}>M</small></h1>
-          <h1 style={[styles.h1, styles.noMarginRight]}>{TimerStore.timer.seconds}<small style={styles.small}>S</small></h1>
-        </div>
-      )
+      if(TimerStore. timer.hours > 0){
+        return (
+          <div style={styles.timer}>
+            <h1 style={styles.h1}>{TimerStore.timer.hours}<small style={styles.small}>H</small></h1>
+            <h1 style={styles.h1}>{TimerStore.timer.minutes}<small style={styles.small}>M</small></h1>
+            <h1 style={[styles.h1, styles.noMarginRight]}>{TimerStore.timer.seconds}<small style={styles.small}>S</small></h1>
+          </div>
+        )
+      }else{
+        return (
+          <div style={styles.timer}>
+            <h1 style={styles.h1}>{TimerStore.timer.minutes}<small style={styles.small}>M</small></h1>
+            <h1 style={[styles.h1, styles.noMarginRight]}>{TimerStore.timer.seconds}<small style={styles.small}>S</small></h1>
+          </div>
+        )
+      }
     }
 
     return <FontAwesome style={styles.spinner} name='spinner' size='4x' spin />
