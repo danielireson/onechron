@@ -21,8 +21,9 @@ class Timer extends Component {
 
   calculateTime() {
     let totalSeconds = (new Date(TimerStore.timer.endTime) - new Date()) / 1000
-    let minutes = Math.floor(totalSeconds / 60)
-    let seconds = Math.floor(totalSeconds - (minutes * 60))
+    let hours = math.floor(totalSeconds / 3600)
+    let minutes = Math.floor((totalSeconds / 60) - (hours * 60))
+    let seconds = Math.floor(totalSeconds - (minutes * 60) - (hours * 3600))
     if (minutes >= 0) {
       TimerStore.timer.minutes = minutes
       TimerStore.timer.seconds = seconds    
