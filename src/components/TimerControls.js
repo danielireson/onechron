@@ -110,10 +110,10 @@ class TimerControls extends Component {
                 <Button icon='eye' onClick={UiState.toggleLinkVisibility} />
               </span>
               <Button icon='clock-o' text='1m' onClick={() => TimerStore.setTime(1)} />
-              <Button icon='clock-o' text='5m' onClick={() => TimerStore.setTime(5)} />
-              <Button icon='clock-o' text='10m'  onClick={() => TimerStore.setTime(10)} />
-              <Button icon='clock-o' text='15m'  onClick={() => TimerStore.setTime(15)} />
-              <Button icon='clock-o' text='20m'  onClick={() => TimerStore.setTime(20)} />
+              <Button icon='clock-o' text='10m' onClick={() => TimerStore.setTime(10)} />
+              <Button icon='clock-o' text='30m'  onClick={() => TimerStore.setTime(30)} />
+              <Button icon='clock-o' text='45m'  onClick={() => TimerStore.setTime(45)} />
+              <Button icon='clock-o' text='1h'  onClick={() => TimerStore.setTime(60)} />
               <Button icon='clock-o' text='Custom' onClick={this.toggleCustomTimeControls} />
               <Button icon='stop' onClick={() => TimerStore.setTime(0)} noMarginRight />
             </div>
