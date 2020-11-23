@@ -125,7 +125,7 @@ class TimerControls extends Component {
             </div>
             <div style={[styles.customTimeControls, styles.container]}>
               <h6 style={styles.controlsHeader}>Set custom Message to broadcast</h6>
-              <input id='custom-text-input' type='text' style={styles.input} placeholder='Message' />
+              <input id='custom-text-input' type='text' style={styles.input} placeholder="" />
               <Button onClick={this.setCustomText} type='success' text='Set' />
               <Button onClick={this.toggleCustomTimeControls} type='danger' text='Cancel' />
             </div>
