@@ -29,13 +29,11 @@ class TimerControls extends Component {
     let time = Number(input.value)
     if (Number.isInteger(time)) {
       TimerStore.setTime(time)
-      this.toggleCustomTimeControls()
     }
   }
   setCustomText() {
     let input = document.getElementById('custom-text-input')
     TimerStore.setMessage(input.value)
-    this.toggleCustomTimeControls()
   }
 
   getControlsHeightProperty() {
