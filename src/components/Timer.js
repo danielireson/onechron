@@ -91,7 +91,7 @@ class Timer extends Component {
         return (
           <div>
             <div>
-              <h1 style={styles.msg}>{TimerStore.timer.message}</h1>
+              <h1 style={styles.msg}>{TimerStore.message}</h1>
             </div>
             <div style={styles.timer}>
               <h1 style={styles.h1}>{TimerStore.timer.hours}<small style={styles.small}>H</small></h1>
@@ -104,7 +104,7 @@ class Timer extends Component {
         return (
           <div>
             <div>
-              <h1 style={styles.msg}>{TimerStore.timer.message}</h1>
+              <h1 style={styles.msg}>{TimerStore.message}</h1>
             </div>
             <div style={styles.timer}>
               <h1 style={styles.h1}>{TimerStore.timer.minutes}<small style={styles.small}>M</small></h1>
